@@ -24,12 +24,22 @@ extension Set : Sequence {
 	}
 }
 
+extension Set {
+	mutating func extend<S : Sequence where S.GeneratorType.Element == Element>(sequence: S) {
+		for each in Element[](sequence) {
+			insert(each)
+		}
+	}
+}
+
+extension Set {
+	init<S : Sequence where S.GeneratorType.Element == Element>(_ sequence: S) {
+		extend(sequence)
+	}
+}
+
 extension Set : ArrayLiteralConvertible {
 	static func convertFromArrayLiteral(elements: Element...) -> Set<Element> {
-		var set = Set()
-		for each in elements {
-			set.insert(each)
-		}
-		return set
+		return Set(elements)
 	}
 }
