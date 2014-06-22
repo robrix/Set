@@ -5,6 +5,11 @@ struct Set<Element : Hashable> {
 }
 
 extension Set {
+	init<S : Sequence where S.GeneratorType.Element == Element>(_ sequence: S) {
+		extend(sequence)
+	}
+	
+	
 	func contains(element: Element) -> Bool {
 		return _dictionary[element].getLogicValue()
 	}
@@ -32,11 +37,6 @@ extension Set {
 	}
 }
 
-extension Set {
-	init<S : Sequence where S.GeneratorType.Element == Element>(_ sequence: S) {
-		extend(sequence)
-	}
-}
 
 extension Set : ArrayLiteralConvertible {
 	static func convertFromArrayLiteral(elements: Element...) -> Set<Element> {
