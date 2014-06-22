@@ -23,3 +23,13 @@ extension Set : Sequence {
 		return _dictionary.keys.generate()
 	}
 }
+
+extension Set : ArrayLiteralConvertible {
+	static func convertFromArrayLiteral(elements: Element...) -> Set<Element> {
+		var set = Set()
+		for each in elements {
+			set.insert(each)
+		}
+		return set
+	}
+}
