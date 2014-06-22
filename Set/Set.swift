@@ -23,6 +23,8 @@ extension Set {
 	}
 }
 
+
+/// Sequence conformance.
 extension Set : Sequence {
 	func generate() -> MapSequenceGenerator<Dictionary<Element, Void>.GeneratorType, Element> {
 		return _dictionary.keys.generate()
@@ -30,6 +32,9 @@ extension Set : Sequence {
 }
 
 
+/// Collection conformance.
+///
+/// Does not actually conform to Collection because that crashes the compiler.
 extension Set {
 	typealias IndexType = DictionaryIndex<Element, Void>
 	var startIndex: IndexType { return _dictionary.startIndex }
@@ -41,10 +46,16 @@ extension Set {
 	}
 }
 
+/// ExtensibleCollection conformance.
+///
+/// Does not actually conform to ExtensibleCollection because that crashes the compiler.
 extension Set {
+	/// In theory, reserve capacity for \c n elements. However, Dictionary does not implement reserveCapacity(), so we just silently ignore it.
 	func reserveCapacity(n: IndexType.DistanceType) {}
 	
+	/// Inserts each element of \c sequence into the receiver.
 	mutating func extend<S : Sequence where S.GeneratorType.Element == Element>(sequence: S) {
+		// Note that this should just be for each in sequence; this is working around a compiler crasher.
 		for each in Element[](sequence) {
 			insert(each)
 		}
