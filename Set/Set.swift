@@ -29,6 +29,18 @@ extension Set : Sequence {
 	}
 }
 
+
+extension Set {
+	typealias IndexType = DictionaryIndex<Element, Void>
+	var startIndex: IndexType { return _dictionary.startIndex }
+	var endIndex: IndexType { return _dictionary.endIndex }
+	
+	subscript(index: IndexType) -> Element {
+		let (element, _) = _dictionary[index]
+		return element
+	}
+}
+
 extension Set {
 	func reserveCapacity(n: IndexType.DistanceType) {}
 	
