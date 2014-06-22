@@ -61,12 +61,16 @@ extension Set {
 	}
 }
 
+
+/// Creates and returns the union of \c set and \c sequence.
 func + <S : Sequence> (inout set: Set<S.GeneratorType.Element>, sequence: S) -> Set<S.GeneratorType.Element> {
 	var union = Set(set)
 	union += sequence
 	return union
 }
 
+
+/// Extends /c set with the elements of /c sequence.
 @assignment func += <S : Sequence> (inout set: Set<S.GeneratorType.Element>, sequence: S) {
 	set.extend(sequence)
 }
