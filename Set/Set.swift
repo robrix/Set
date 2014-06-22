@@ -62,6 +62,7 @@ extension Set {
 }
 
 
+/// ArrayLiteralConvertible conformance.
 extension Set : ArrayLiteralConvertible {
 	static func convertFromArrayLiteral(elements: Element...) -> Set<Element> {
 		return Set(elements)
