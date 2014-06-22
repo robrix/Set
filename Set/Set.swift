@@ -30,6 +30,8 @@ extension Set : Sequence {
 }
 
 extension Set {
+	func reserveCapacity(n: IndexType.DistanceType) {}
+	
 	mutating func extend<S : Sequence where S.GeneratorType.Element == Element>(sequence: S) {
 		for each in Element[](sequence) {
 			insert(each)
