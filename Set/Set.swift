@@ -61,6 +61,12 @@ extension Set {
 	}
 }
 
+func + <S : Sequence> (inout set: Set<S.GeneratorType.Element>, sequence: S) -> Set<S.GeneratorType.Element> {
+	var union = Set(set)
+	union += sequence
+	return union
+}
+
 @assignment func += <S : Sequence> (inout set: Set<S.GeneratorType.Element>, sequence: S) {
 	set.extend(sequence)
 }
