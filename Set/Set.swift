@@ -8,4 +8,8 @@ extension Set {
 	func contains(element: Element) -> Bool {
 		return _dictionary[element].getLogicValue()
 	}
+	
+	mutating func insert(element: Element) {
+		_dictionary[element] = ()
+	}
 }
