@@ -17,3 +17,9 @@ extension Set {
 		_dictionary.removeValueForKey(element)
 	}
 }
+
+extension Set : Sequence {
+	func generate() -> MapSequenceGenerator<Dictionary<Element, Void>.GeneratorType, Element> {
+		return _dictionary.keys.generate()
+	}
+}
