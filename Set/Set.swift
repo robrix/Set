@@ -61,6 +61,10 @@ extension Set {
 	}
 }
 
+@assignment func += <S : Sequence> (inout set: Set<S.GeneratorType.Element>, sequence: S) {
+	set.extend(sequence)
+}
+
 
 /// ArrayLiteralConvertible conformance.
 extension Set : ArrayLiteralConvertible {
