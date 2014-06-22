@@ -1,10 +1,9 @@
 //  Copyright (c) 2014 Rob Rix. All rights reserved.
 
+/// A set of unique elements.
 struct Set<Element : Hashable> {
 	var _dictionary: Dictionary<Element, Void> = [:]
-}
-
-extension Set {
+	
 	init<S : Sequence where S.GeneratorType.Element == Element>(_ sequence: S) {
 		extend(sequence)
 	}
