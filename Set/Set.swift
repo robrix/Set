@@ -12,4 +12,8 @@ extension Set {
 	mutating func insert(element: Element) {
 		_dictionary[element] = ()
 	}
+	
+	mutating func remove(element: Element) {
+		_dictionary.removeValueForKey(element)
+	}
 }
