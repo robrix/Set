@@ -85,3 +85,11 @@ extension Set : ArrayLiteralConvertible {
 		return Set(elements)
 	}
 }
+
+
+/// Set is reducible.
+extension Set {
+	func reduce<Into>(initial: Into, combine: (Into, Element) -> Into) -> Into {
+		return Swift.reduce(self, initial, combine)
+	}
+}
