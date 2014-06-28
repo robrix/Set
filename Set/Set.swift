@@ -67,7 +67,7 @@ extension Set {
 
 
 /// Creates and returns the union of \c set and \c sequence.
-func + <S : Sequence> (inout set: Set<S.GeneratorType.Element>, sequence: S) -> Set<S.GeneratorType.Element> {
+func + <S : Sequence> (set: Set<S.GeneratorType.Element>, sequence: S) -> Set<S.GeneratorType.Element> {
 	var union = Set(set)
 	union += sequence
 	return union
