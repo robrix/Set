@@ -20,5 +20,8 @@ See [`Set.swift`][Set.swift] for more details.
 3. Add `Set.framework` to your target’s `Link Binary With Libraries` build phase.
 4. You may also want to add a `Copy Files` phase which copies `Set.framework` (and any other framework dependencies you need) into your bundle’s `Frameworks` directory. If your target is a framework, you may instead want the client app to include `Set.framework`.
 
+## Thanks
+
+- [Greg Titus wrote a Set in Swift which inspired this](https://twitter.com/gregtitus/status/476420154230726656).
 
 [Set.swift]: https://github.com/robrix/Set/blob/master/Set/Set.swift
