@@ -8,6 +8,8 @@ struct Set<Element : Hashable> {
 		extend(sequence)
 	}
 	
+	init() {}
+	
 	
 	func contains(element: Element) -> Bool {
 		return _dictionary[element].getLogicValue()
