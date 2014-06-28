@@ -11,6 +11,8 @@ struct Set<Element : Hashable> {
 	init() {}
 	
 	
+	var count: Int { return _dictionary.count }
+	
 	func contains(element: Element) -> Bool {
 		return _dictionary[element].getLogicValue()
 	}
