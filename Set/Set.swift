@@ -90,6 +90,12 @@ extension Set : ArrayLiteralConvertible {
 }
 
 
+/// Defines equality for sets of equatable elements.
+func == <Element : Hashable> (a: Set<Element>, b: Set<Element>) -> Bool {
+	return a._dictionary == b._dictionary
+}
+
+
 /// Set is reducible.
 extension Set {
 	func reduce<Into>(initial: Into, combine: (Into, Element) -> Into) -> Into {
