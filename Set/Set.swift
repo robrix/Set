@@ -29,8 +29,11 @@ struct Set<Element : Hashable> {
 
 /// Sequence conformance.
 extension Set : Sequence {
-	func generate() -> MapSequenceGenerator<Dictionary<Element, Void>.GeneratorType, Element> {
-		return _dictionary.keys.generate()
+	func generate() -> GeneratorOf<Element> {
+		var generator = _dictionary.keys.generate()
+		return GeneratorOf {
+			return generator.next()
+		}
 	}
 }
 
