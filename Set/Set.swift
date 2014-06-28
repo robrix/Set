@@ -44,8 +44,7 @@ extension Set {
 	var endIndex: IndexType { return _dictionary.endIndex }
 	
 	subscript(index: IndexType) -> Element {
-		let (element, _) = _dictionary[index]
-		return element
+		return _dictionary[index].0
 	}
 }
 
