@@ -15,7 +15,7 @@ See [`Set.swift`][Set.swift] for more details.
 
 1. Add this repo as a submodule in e.g. `External/Set`:
   
-    git submodule add https://github.com/robrix/Set.git External/Set
+        git submodule add https://github.com/robrix/Set.git External/Set
 2. Drag `Set.xcodeproj` into your `.xcworkspace`/`.xcodeproj`.
 3. Add `Set.framework` to your target’s `Link Binary With Libraries` build phase.
 4. You may also want to add a `Copy Files` phase which copies `Set.framework` (and any other framework dependencies you need) into your bundle’s `Frameworks` directory. If your target is a framework, you may instead want the client app to include `Set.framework`.
