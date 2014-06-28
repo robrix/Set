@@ -2,7 +2,7 @@
 
 /// A set of unique elements.
 struct Set<Element : Hashable> {
-	var _dictionary: Dictionary<Element, Void> = [:]
+	var _dictionary: Dictionary<Element, Unit> = [:]
 	
 	init<S : Sequence where S.GeneratorType.Element == Element>(_ sequence: S) {
 		extend(sequence)
@@ -18,7 +18,7 @@ struct Set<Element : Hashable> {
 	}
 	
 	mutating func insert(element: Element) {
-		_dictionary[element] = ()
+		_dictionary[element] = Unit()
 	}
 	
 	mutating func remove(element: Element) {
@@ -42,7 +42,7 @@ extension Set : Sequence {
 ///
 /// Does not actually conform to Collection because that crashes the compiler.
 extension Set {
-	typealias IndexType = DictionaryIndex<Element, Void>
+	typealias IndexType = DictionaryIndex<Element, Unit>
 	var startIndex: IndexType { return _dictionary.startIndex }
 	var endIndex: IndexType { return _dictionary.endIndex }
 	
