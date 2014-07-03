@@ -102,3 +102,14 @@ extension Set {
 		return Swift.reduce(self, initial, combine)
 	}
 }
+
+
+/// Printable conformance.
+extension Set : Printable {
+	var description: String {
+		if self.count == 0 { return "{}" }
+		
+		let joined = join(", ", map(self) { toString($0) })
+		return "{ \(joined) }"
+	}
+}
