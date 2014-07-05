@@ -46,6 +46,11 @@ extension Set {
 	var startIndex: IndexType { return _dictionary.startIndex }
 	var endIndex: IndexType { return _dictionary.endIndex }
 	
+	subscript(v: ()) -> Element {
+	get { return _dictionary[_dictionary.startIndex].0 }
+	set { insert(newValue) }
+	}
+	
 	subscript(index: IndexType) -> Element {
 		return _dictionary[index].0
 	}
