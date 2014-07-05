@@ -90,7 +90,7 @@ extension Set : ArrayLiteralConvertible {
 }
 
 
-/// Defines equality for sets of equatable elements.
+/// Equatable conformance.
 func == <Element : Hashable> (a: Set<Element>, b: Set<Element>) -> Bool {
 	return a._dictionary == b._dictionary
 }
@@ -111,5 +111,24 @@ extension Set : Printable {
 		
 		let joined = join(", ", map(self) { toString($0) })
 		return "{ \(joined) }"
+	}
+}
+
+
+/// Hashable conformance.
+///
+/// This hash function has not been proven in this usage, but is based on Bob Jenkins’ one-at-a-time hash.
+extension Set : Hashable {
+	var hashValue: Int {
+		var h = reduce(0) { into, each in
+			var h = into + each.hashValue
+			h += (h << 10)
+			h ^= (h >> 6)
+			return h
+		}
+		h += (h << 3)
+		h ^= (h >> 11)
+		h += (h << 15)
+		return h
 	}
 }
