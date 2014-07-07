@@ -66,7 +66,7 @@ extension Set {
 	/// Inserts each element of \c sequence into the receiver.
 	mutating func extend<S : Sequence where S.GeneratorType.Element == Element>(sequence: S) {
 		// Note that this should just be for each in sequence; this is working around a compiler crasher.
-		for each in Element[](sequence) {
+		for each in [Element](sequence) {
 			insert(each)
 		}
 	}
