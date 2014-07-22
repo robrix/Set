@@ -1,27 +1,27 @@
 //  Copyright (c) 2014 Rob Rix. All rights reserved.
 
 /// A set of unique elements.
-struct Set<Element : Hashable> {
+public struct Set<Element : Hashable> {
 	var _dictionary: Dictionary<Element, Unit> = [:]
 	
-	init<S : Sequence where S.GeneratorType.Element == Element>(_ sequence: S) {
+	public init<S : Sequence where S.GeneratorType.Element == Element>(_ sequence: S) {
 		extend(sequence)
 	}
 	
-	init() {}
+	public init() {}
 	
 	
-	var count: Int { return _dictionary.count }
+	public var count: Int { return _dictionary.count }
 	
-	func contains(element: Element) -> Bool {
+	public func contains(element: Element) -> Bool {
 		return _dictionary[element].getLogicValue()
 	}
 	
-	mutating func insert(element: Element) {
+	public mutating func insert(element: Element) {
 		_dictionary[element] = Unit()
 	}
 	
-	mutating func remove(element: Element) {
+	public mutating func remove(element: Element) {
 		_dictionary.removeValueForKey(element)
 	}
 }
@@ -29,7 +29,7 @@ struct Set<Element : Hashable> {
 
 /// Sequence conformance.
 extension Set : Sequence {
-	func generate() -> GeneratorOf<Element> {
+	public func generate() -> GeneratorOf<Element> {
 		var generator = _dictionary.keys.generate()
 		return GeneratorOf {
 			return generator.next()
@@ -42,16 +42,16 @@ extension Set : Sequence {
 ///
 /// Does not actually conform to Collection because that crashes the compiler.
 extension Set {
-	typealias IndexType = DictionaryIndex<Element, Unit>
-	var startIndex: IndexType { return _dictionary.startIndex }
-	var endIndex: IndexType { return _dictionary.endIndex }
+	public typealias IndexType = DictionaryIndex<Element, Unit>
+	public var startIndex: IndexType { return _dictionary.startIndex }
+	public var endIndex: IndexType { return _dictionary.endIndex }
 	
-	subscript(v: ()) -> Element {
+	public subscript(v: ()) -> Element {
 	get { return _dictionary[_dictionary.startIndex].0 }
 	set { insert(newValue) }
 	}
 	
-	subscript(index: IndexType) -> Element {
+	public subscript(index: IndexType) -> Element {
 		return _dictionary[index].0
 	}
 }
@@ -61,10 +61,10 @@ extension Set {
 /// Does not actually conform to ExtensibleCollection because that crashes the compiler.
 extension Set {
 	/// In theory, reserve capacity for \c n elements. However, Dictionary does not implement reserveCapacity(), so we just silently ignore it.
-	func reserveCapacity(n: IndexType.DistanceType) {}
+	public func reserveCapacity(n: IndexType.DistanceType) {}
 	
 	/// Inserts each element of \c sequence into the receiver.
-	mutating func extend<S : Sequence where S.GeneratorType.Element == Element>(sequence: S) {
+	public mutating func extend<S : Sequence where S.GeneratorType.Element == Element>(sequence: S) {
 		// Note that this should just be for each in sequence; this is working around a compiler crasher.
 		for each in [Element](sequence) {
 			insert(each)
@@ -74,7 +74,7 @@ extension Set {
 
 
 /// Creates and returns the union of \c set and \c sequence.
-func + <S : Sequence> (set: Set<S.GeneratorType.Element>, sequence: S) -> Set<S.GeneratorType.Element> {
+public func + <S : Sequence> (set: Set<S.GeneratorType.Element>, sequence: S) -> Set<S.GeneratorType.Element> {
 	var union = Set(set)
 	union += sequence
 	return union
@@ -82,28 +82,28 @@ func + <S : Sequence> (set: Set<S.GeneratorType.Element>, sequence: S) -> Set<S.
 
 
 /// Extends /c set with the elements of /c sequence.
-@assignment func += <S : Sequence> (inout set: Set<S.GeneratorType.Element>, sequence: S) {
+@assignment public func += <S : Sequence> (inout set: Set<S.GeneratorType.Element>, sequence: S) {
 	set.extend(sequence)
 }
 
 
 /// ArrayLiteralConvertible conformance.
 extension Set : ArrayLiteralConvertible {
-	static func convertFromArrayLiteral(elements: Element...) -> Set<Element> {
+	public static func convertFromArrayLiteral(elements: Element...) -> Set<Element> {
 		return Set(elements)
 	}
 }
 
 
 /// Equatable conformance.
-func == <Element : Hashable> (a: Set<Element>, b: Set<Element>) -> Bool {
+public func == <Element : Hashable> (a: Set<Element>, b: Set<Element>) -> Bool {
 	return a._dictionary == b._dictionary
 }
 
 
 /// Set is reducible.
 extension Set {
-	func reduce<Into>(initial: Into, combine: (Into, Element) -> Into) -> Into {
+	public func reduce<Into>(initial: Into, combine: (Into, Element) -> Into) -> Into {
 		return Swift.reduce(self, initial, combine)
 	}
 }
@@ -111,7 +111,7 @@ extension Set {
 
 /// Printable conformance.
 extension Set : Printable {
-	var description: String {
+	public var description: String {
 		if self.count == 0 { return "{}" }
 		
 		let joined = join(", ", map(self) { toString($0) })
@@ -124,7 +124,7 @@ extension Set : Printable {
 ///
 /// This hash function has not been proven in this usage, but is based on Bob Jenkins’ one-at-a-time hash.
 extension Set : Hashable {
-	var hashValue: Int {
+	public var hashValue: Int {
 		var h = reduce(0) { into, each in
 			var h = into + each.hashValue
 			h += (h << 10)
