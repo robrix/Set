@@ -4,7 +4,7 @@
 public struct Set<Element : Hashable> {
 	var _dictionary: Dictionary<Element, Unit> = [:]
 	
-	public init<S : Sequence where S.GeneratorType.Element == Element>(_ sequence: S) {
+	public init<S : SequenceType where S.Generator.Element == Element>(_ sequence: S) {
 		extend(sequence)
 	}
 	
@@ -14,7 +14,7 @@ public struct Set<Element : Hashable> {
 	public var count: Int { return _dictionary.count }
 	
 	public func contains(element: Element) -> Bool {
-		return _dictionary[element].getLogicValue()
+		return _dictionary[element].hasValue
 	}
 	
 	public mutating func insert(element: Element) {
@@ -28,7 +28,7 @@ public struct Set<Element : Hashable> {
 
 
 /// Sequence conformance.
-extension Set : Sequence {
+extension Set : SequenceType {
 	public func generate() -> GeneratorOf<Element> {
 		var generator = _dictionary.keys.generate()
 		return GeneratorOf {
@@ -61,10 +61,10 @@ extension Set {
 /// Does not actually conform to ExtensibleCollection because that crashes the compiler.
 extension Set {
 	/// In theory, reserve capacity for \c n elements. However, Dictionary does not implement reserveCapacity(), so we just silently ignore it.
-	public func reserveCapacity(n: IndexType.DistanceType) {}
+	public func reserveCapacity(n: IndexType.Distance) {}
 	
 	/// Inserts each element of \c sequence into the receiver.
-	public mutating func extend<S : Sequence where S.GeneratorType.Element == Element>(sequence: S) {
+	public mutating func extend<S : SequenceType where S.Generator.Element == Element>(sequence: S) {
 		// Note that this should just be for each in sequence; this is working around a compiler crasher.
 		for each in [Element](sequence) {
 			insert(each)
@@ -74,7 +74,7 @@ extension Set {
 
 
 /// Creates and returns the union of \c set and \c sequence.
-public func + <S : Sequence> (set: Set<S.GeneratorType.Element>, sequence: S) -> Set<S.GeneratorType.Element> {
+public func + <S : SequenceType> (set: Set<S.Generator.Element>, sequence: S) -> Set<S.Generator.Element> {
 	var union = Set(set)
 	union += sequence
 	return union
@@ -82,7 +82,7 @@ public func + <S : Sequence> (set: Set<S.GeneratorType.Element>, sequence: S) ->
 
 
 /// Extends /c set with the elements of /c sequence.
-@assignment public func += <S : Sequence> (inout set: Set<S.GeneratorType.Element>, sequence: S) {
+public func += <S : SequenceType> (inout set: Set<S.Generator.Element>, sequence: S) {
 	set.extend(sequence)
 }
 
