@@ -14,7 +14,7 @@ public struct Set<Element : Hashable> {
 	public var count: Int { return _dictionary.count }
 	
 	public func contains(element: Element) -> Bool {
-		return _dictionary[element].hasValue
+		return _dictionary[element] != nil
 	}
 	
 	public mutating func insert(element: Element) {
@@ -89,8 +89,8 @@ public func += <S : SequenceType> (inout set: Set<S.Generator.Element>, sequence
 
 /// ArrayLiteralConvertible conformance.
 extension Set : ArrayLiteralConvertible {
-	public static func convertFromArrayLiteral(elements: Element...) -> Set<Element> {
-		return Set(elements)
+	public init(arrayLiteral elements: Element...) {
+		self.init(elements)
 	}
 }
 
