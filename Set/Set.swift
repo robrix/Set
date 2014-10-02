@@ -1,27 +1,27 @@
 //  Copyright (c) 2014 Rob Rix. All rights reserved.
 
 /// A set of unique elements.
-struct Set<Element : Hashable> {
+public struct Set<Element : Hashable> {
 	var _dictionary: Dictionary<Element, Unit> = [:]
 	
-	init<S : SequenceType where S.Generator.Element == Element>(_ sequence: S) {
+	public init<S : SequenceType where S.Generator.Element == Element>(_ sequence: S) {
 		extend(sequence)
 	}
 	
-	init() {}
+	public init() {}
 	
 	
-	var count: Int { return _dictionary.count }
+	public var count: Int { return _dictionary.count }
 	
-	func contains(element: Element) -> Bool {
+	public func contains(element: Element) -> Bool {
 		return _dictionary[element] != nil
 	}
 	
-	mutating func insert(element: Element) {
+	public mutating func insert(element: Element) {
 		_dictionary[element] = Unit()
 	}
 	
-	mutating func remove(element: Element) {
+	public mutating func remove(element: Element) {
 		_dictionary.removeValueForKey(element)
 	}
 }
@@ -29,7 +29,7 @@ struct Set<Element : Hashable> {
 
 /// Sequence conformance.
 extension Set : SequenceType {
-	func generate() -> GeneratorOf<Element> {
+	public func generate() -> GeneratorOf<Element> {
 		var generator = _dictionary.keys.generate()
 		return GeneratorOf {
 			return generator.next()
@@ -69,7 +69,7 @@ extension Set {
 
 
 /// Creates and returns the union of \c set and \c sequence.
-func + <S : SequenceType> (set: Set<S.Generator.Element>, sequence: S) -> Set<S.Generator.Element> {
+public func + <S : SequenceType> (set: Set<S.Generator.Element>, sequence: S) -> Set<S.Generator.Element> {
 	var union = Set(set)
 	union += sequence
 	return union
@@ -77,28 +77,28 @@ func + <S : SequenceType> (set: Set<S.Generator.Element>, sequence: S) -> Set<S.
 
 
 /// Extends /c set with the elements of /c sequence.
-func += <S : SequenceType> (inout set: Set<S.Generator.Element>, sequence: S) {
+public func += <S : SequenceType> (inout set: Set<S.Generator.Element>, sequence: S) {
 	set.extend(sequence)
 }
 
 
 /// ArrayLiteralConvertible conformance.
 extension Set : ArrayLiteralConvertible {
-	init(arrayLiteral elements: Element...) {
+	public init(arrayLiteral elements: Element...) {
 		self.init(elements)
 	}
 }
 
 
 /// Defines equality for sets of equatable elements.
-func == <Element : Hashable> (a: Set<Element>, b: Set<Element>) -> Bool {
+public func == <Element : Hashable> (a: Set<Element>, b: Set<Element>) -> Bool {
 	return a._dictionary == b._dictionary
 }
 
 
 /// Set is reducible.
 extension Set {
-	func reduce<Into>(initial: Into, combine: (Into, Element) -> Into) -> Into {
+	public func reduce<Into>(initial: Into, combine: (Into, Element) -> Into) -> Into {
 		return Swift.reduce(self, initial, combine)
 	}
 }
