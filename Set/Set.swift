@@ -44,6 +44,11 @@ extension Set : CollectionType {
 	public var startIndex: IndexType { return values.startIndex }
 	public var endIndex: IndexType { return values.endIndex }
 	
+	public subscript(v: ()) -> Element {
+	get { return values[values.startIndex].0 }
+	set { insert(newValue) }
+	}
+	
 	public subscript(index: IndexType) -> Element {
 		return values[index].0
 	}
@@ -100,5 +105,35 @@ public func == <Element : Hashable> (a: Set<Element>, b: Set<Element>) -> Bool {
 extension Set {
 	public func reduce<Into>(initial: Into, combine: (Into, Element) -> Into) -> Into {
 		return Swift.reduce(self, initial, combine)
+	}
+}
+
+
+/// Printable conformance.
+extension Set : Printable {
+	public var description: String {
+		if self.count == 0 { return "{}" }
+		
+		let joined = join(", ", map(self) { toString($0) })
+		return "{ \(joined) }"
+	}
+}
+
+
+/// Hashable conformance.
+///
+/// This hash function has not been proven in this usage, but is based on Bob Jenkins’ one-at-a-time hash.
+extension Set : Hashable {
+	public var hashValue: Int {
+		var h = reduce(0) { into, each in
+			var h = into + each.hashValue
+			h += (h << 10)
+			h ^= (h >> 6)
+			return h
+		}
+		h += (h << 3)
+		h ^= (h >> 11)
+		h += (h << 15)
+		return h
 	}
 }
