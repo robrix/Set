@@ -27,7 +27,7 @@ public struct Set<Element : Hashable> {
 }
 
 
-/// Sequence conformance.
+/// SequenceType conformance.
 extension Set : SequenceType {
 	public func generate() -> GeneratorOf<Element> {
 		var generator = values.keys.generate()
@@ -38,32 +38,32 @@ extension Set : SequenceType {
 }
 
 
-/// Collection conformance.
-///
-/// Does not actually conform to Collection because that crashes the compiler.
-extension Set {
-	typealias IndexType = DictionaryIndex<Element, Unit>
-	var startIndex: IndexType { return values.startIndex }
-	var endIndex: IndexType { return values.endIndex }
+/// CollectionType conformance.
+extension Set : CollectionType {
+	public typealias IndexType = DictionaryIndex<Element, Unit>
+	public var startIndex: IndexType { return values.startIndex }
+	public var endIndex: IndexType { return values.endIndex }
 	
-	subscript(index: IndexType) -> Element {
+	public subscript(index: IndexType) -> Element {
 		return values[index].0
 	}
 }
 
-/// ExtensibleCollection conformance.
-///
-/// Does not actually conform to ExtensibleCollection because that crashes the compiler.
-extension Set {
+/// ExtensibleCollectionType conformance.
+extension Set : ExtensibleCollectionType {
 	/// In theory, reserve capacity for \c n elements. However, Dictionary does not implement reserveCapacity(), so we just silently ignore it.
-	func reserveCapacity(n: IndexType.Distance) {}
+	public func reserveCapacity(n: IndexType.Distance) {}
 	
 	/// Inserts each element of \c sequence into the receiver.
-	mutating func extend<S : SequenceType where S.Generator.Element == Element>(sequence: S) {
+	public mutating func extend<S : SequenceType where S.Generator.Element == Element>(sequence: S) {
 		// Note that this should just be for each in sequence; this is working around a compiler crasher.
 		for each in [Element](sequence) {
 			insert(each)
 		}
+	}
+
+	public mutating func append(element: Element) {
+		insert(element)
 	}
 }
 
