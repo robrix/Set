@@ -2,8 +2,6 @@
 
 /// A set of unique elements.
 public struct Set<Element : Hashable> {
-	var _dictionary: Dictionary<Element, Unit> = [:]
-	
 	public init<S : SequenceType where S.Generator.Element == Element>(_ sequence: S) {
 		extend(sequence)
 	}
@@ -11,26 +9,28 @@ public struct Set<Element : Hashable> {
 	public init() {}
 	
 	
-	public var count: Int { return _dictionary.count }
+	public var count: Int { return values.count }
 	
 	public func contains(element: Element) -> Bool {
-		return _dictionary[element] != nil
+		return values[element] != nil
 	}
 	
 	public mutating func insert(element: Element) {
-		_dictionary[element] = Unit()
+		values[element] = Unit()
 	}
 	
 	public mutating func remove(element: Element) {
-		_dictionary.removeValueForKey(element)
+		values.removeValueForKey(element)
 	}
+
+	private var values: Dictionary<Element, Unit> = [:]
 }
 
 
 /// Sequence conformance.
 extension Set : SequenceType {
 	public func generate() -> GeneratorOf<Element> {
-		var generator = _dictionary.keys.generate()
+		var generator = values.keys.generate()
 		return GeneratorOf {
 			return generator.next()
 		}
@@ -43,11 +43,11 @@ extension Set : SequenceType {
 /// Does not actually conform to Collection because that crashes the compiler.
 extension Set {
 	typealias IndexType = DictionaryIndex<Element, Unit>
-	var startIndex: IndexType { return _dictionary.startIndex }
-	var endIndex: IndexType { return _dictionary.endIndex }
+	var startIndex: IndexType { return values.startIndex }
+	var endIndex: IndexType { return values.endIndex }
 	
 	subscript(index: IndexType) -> Element {
-		return _dictionary[index].0
+		return values[index].0
 	}
 }
 
@@ -92,7 +92,7 @@ extension Set : ArrayLiteralConvertible {
 
 /// Defines equality for sets of equatable elements.
 public func == <Element : Hashable> (a: Set<Element>, b: Set<Element>) -> Bool {
-	return a._dictionary == b._dictionary
+	return a.values == b.values
 }
 
 
