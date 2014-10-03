@@ -2,8 +2,6 @@
 
 /// A set of unique elements.
 public struct Set<Element : Hashable> {
-	var _dictionary: Dictionary<Element, Unit> = [:]
-	
 	public init<S : SequenceType where S.Generator.Element == Element>(_ sequence: S) {
 		extend(sequence)
 	}
@@ -11,26 +9,28 @@ public struct Set<Element : Hashable> {
 	public init() {}
 	
 	
-	public var count: Int { return _dictionary.count }
+	public var count: Int { return values.count }
 	
 	public func contains(element: Element) -> Bool {
-		return _dictionary[element].hasValue
+		return values[element] != nil
 	}
 	
 	public mutating func insert(element: Element) {
-		_dictionary[element] = Unit()
+		values[element] = Unit()
 	}
 	
 	public mutating func remove(element: Element) {
-		_dictionary.removeValueForKey(element)
+		values.removeValueForKey(element)
 	}
+
+	private var values: Dictionary<Element, Unit> = [:]
 }
 
 
-/// Sequence conformance.
+/// SequenceType conformance.
 extension Set : SequenceType {
 	public func generate() -> GeneratorOf<Element> {
-		var generator = _dictionary.keys.generate()
+		var generator = values.keys.generate()
 		return GeneratorOf {
 			return generator.next()
 		}
@@ -38,28 +38,24 @@ extension Set : SequenceType {
 }
 
 
-/// Collection conformance.
-///
-/// Does not actually conform to Collection because that crashes the compiler.
-extension Set {
+/// CollectionType conformance.
+extension Set : CollectionType {
 	public typealias IndexType = DictionaryIndex<Element, Unit>
-	public var startIndex: IndexType { return _dictionary.startIndex }
-	public var endIndex: IndexType { return _dictionary.endIndex }
+	public var startIndex: IndexType { return values.startIndex }
+	public var endIndex: IndexType { return values.endIndex }
 	
 	public subscript(v: ()) -> Element {
-	get { return _dictionary[_dictionary.startIndex].0 }
+	get { return values[values.startIndex].0 }
 	set { insert(newValue) }
 	}
 	
 	public subscript(index: IndexType) -> Element {
-		return _dictionary[index].0
+		return values[index].0
 	}
 }
 
-/// ExtensibleCollection conformance.
-///
-/// Does not actually conform to ExtensibleCollection because that crashes the compiler.
-extension Set {
+/// ExtensibleCollectionType conformance.
+extension Set : ExtensibleCollectionType {
 	/// In theory, reserve capacity for \c n elements. However, Dictionary does not implement reserveCapacity(), so we just silently ignore it.
 	public func reserveCapacity(n: IndexType.Distance) {}
 	
@@ -69,6 +65,10 @@ extension Set {
 		for each in [Element](sequence) {
 			insert(each)
 		}
+	}
+
+	public mutating func append(element: Element) {
+		insert(element)
 	}
 }
 
@@ -89,15 +89,15 @@ public func += <S : SequenceType> (inout set: Set<S.Generator.Element>, sequence
 
 /// ArrayLiteralConvertible conformance.
 extension Set : ArrayLiteralConvertible {
-	public static func convertFromArrayLiteral(elements: Element...) -> Set<Element> {
-		return Set(elements)
+	public init(arrayLiteral elements: Element...) {
+		self.init(elements)
 	}
 }
 
 
-/// Equatable conformance.
+/// Defines equality for sets of equatable elements.
 public func == <Element : Hashable> (a: Set<Element>, b: Set<Element>) -> Bool {
-	return a._dictionary == b._dictionary
+	return a.values == b.values
 }
 
 
