@@ -23,7 +23,7 @@ public struct Set<Element : Hashable> {
 		values.removeValueForKey(element)
 	}
 
-	private var values: Dictionary<Element, Unit> = [:]
+	private var values: [Element:Unit] = [:]
 }
 
 
