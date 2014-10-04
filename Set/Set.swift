@@ -3,14 +3,26 @@
 /// A set of unique elements.
 public struct Set<Element : Hashable> {
 	public init<S : SequenceType where S.Generator.Element == Element>(_ sequence: S) {
+		self.values = [:]
 		extend(sequence)
 	}
 	
-	public init() {}
+	public init() {
+		self.values = [:]
+	}
 	
-	
+	public init(minimumCapacity: Int) {
+		self.values = [Element:Unit](minimumCapacity: minimumCapacity)
+	}
+
+	/// The number of entries in the set.
 	public var count: Int { return values.count }
-	
+
+	/// True iff `count == 0`
+	public var isEmpty: Bool {
+		return self.values.isEmpty
+	}
+
 	public func contains(element: Element) -> Bool {
 		return values[element] != nil
 	}
@@ -23,7 +35,7 @@ public struct Set<Element : Hashable> {
 		values.removeValueForKey(element)
 	}
 
-	private var values: Dictionary<Element, Unit> = [:]
+	private var values: [Element:Unit]
 }
 
 
@@ -70,14 +82,6 @@ extension Set : ExtensibleCollectionType {
 	public mutating func append(element: Element) {
 		insert(element)
 	}
-}
-
-
-/// Creates and returns the union of \c set and \c sequence.
-public func + <S : SequenceType> (set: Set<S.Generator.Element>, sequence: S) -> Set<S.Generator.Element> {
-	var union = Set(set)
-	union += sequence
-	return union
 }
 
 
