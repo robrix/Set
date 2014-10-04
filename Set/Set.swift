@@ -20,9 +20,7 @@ public struct Set<Element : Hashable> {
 
 	/// True iff `count == 0`
 	public var isEmpty: Bool {
-		get {
-			return self.values.isEmpty
-		}
+		return self.values.isEmpty
 	}
 
 	public func contains(element: Element) -> Bool {
