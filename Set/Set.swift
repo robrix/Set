@@ -73,14 +73,6 @@ extension Set : ExtensibleCollectionType {
 }
 
 
-/// Creates and returns the union of \c set and \c sequence.
-public func + <S : SequenceType> (set: Set<S.Generator.Element>, sequence: S) -> Set<S.Generator.Element> {
-	var union = Set(set)
-	union += sequence
-	return union
-}
-
-
 /// Extends /c set with the elements of /c sequence.
 public func += <S : SequenceType> (inout set: Set<S.Generator.Element>, sequence: S) {
 	set.extend(sequence)
