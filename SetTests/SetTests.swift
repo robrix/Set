@@ -19,4 +19,26 @@ class SetTests: XCTestCase {
 		
 		XCTAssert(c == Set([1, 2, 3, 4, 5]))
 	}
+
+	func testIntersection() {
+		XCTAssert(Set([1, 2, 3]) & Set([2, 3, 4]) == Set([2, 3]))
+	}
+
+	func testIntersectionAssignment() {
+		var set = Set([1, 2, 3])
+		set &= Set([2, 3, 4])
+
+		XCTAssert(set == Set([2, 3]))
+	}
+	
+	func testDifference() {
+		XCTAssert(Set([1, 2, 3]) - Set([2, 3, 4]) == Set([1]))
+	}
+
+	func testDifferenceAssignment() {
+		var set = Set([1, 2, 3])
+		set -= Set([2, 3, 4])
+
+		XCTAssert(set == Set([1]))
+	}
 }

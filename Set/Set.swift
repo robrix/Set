@@ -85,11 +85,58 @@ extension Set : ExtensibleCollectionType {
 }
 
 
+/// Set operations (union, intersection, difference).
+extension Set {
+	/// Returns the union of /c self and /c set.
+	public func union(set: Set<Element>) -> Set<Element> {
+		return self + set
+	}
+
+	/// Returns the intersection of /c self and /c other.
+	public func intersection(other: Set<Element>) -> Set<Element> {
+		if self.count <= other.count {
+			return Set(filter(self) { other.contains($0) })
+		} else {
+			return Set(filter(other) { self.contains($0) })
+		}
+	}
+
+	/// Returns a new set with all elements from /c self which are not contained in /c other.
+	public func difference(other: Set<Element>) -> Set<Element> {
+		return Set(filter(self) { !other.contains($0) })
+	}
+}
+
 /// Extends /c set with the elements of /c sequence.
 public func += <S : SequenceType> (inout set: Set<S.Generator.Element>, sequence: S) {
 	set.extend(sequence)
 }
 
+/// Returns a new set with all elements from /c set which are not contained in /c other.
+public func - <Element> (set: Set<Element>, other: Set<Element>) -> Set<Element> {
+	return set.difference(other)
+}
+
+/// Removes all elements in /c other from /c set.
+public func -= <Element> (inout set: Set<Element>, other: Set<Element>) {
+	for element in other {
+		set.remove(element)
+	}
+}
+
+/// Intersects with /c set with /c other.
+public func &= <Element> (inout set: Set<Element>, other: Set<Element>) {
+	for element in set {
+		if !other.contains(element) {
+			set.remove(element)
+		}
+	}
+}
+
+/// Returns the intersection of /c set and /c other.
+public func & <Element> (set: Set<Element>, other: Set<Element>) -> Set<Element> {
+	return set.intersection(other)
+}
 
 /// ArrayLiteralConvertible conformance.
 extension Set : ArrayLiteralConvertible {
