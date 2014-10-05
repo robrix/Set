@@ -6,7 +6,13 @@ This is a Swift microframework which implements a Dictionary-backed Set.
 
 ```swift
 // Union
-Set([1, 2, 3]) + Set([3, 4, 5])
+Set([1, 2, 3]) + Set([3, 4, 5]) // == Set([1, 2, 3, 4, 5])
+
+// Difference
+Set([1, 2, 3]) - Set([2, 3]) // == Set([1])
+
+// Intersection
+Set([1, 2, 3]) & Set([3, 4, 5]) // == Set([3])
 ```
 
 See [`Set.swift`][Set.swift] for more details.
