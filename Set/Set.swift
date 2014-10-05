@@ -87,30 +87,20 @@ extension Set : ExtensibleCollectionType {
 
 /// Set operations (union, intersection, difference)
 extension Set {
-	public func filtered(includeElement: (Element) -> Bool) -> Set<Element> {
-		var result = Set<Element>()
-		for element in self {
-			if includeElement(element) {
-				result.insert(element)
-			}
-		}
-		return result
-	}
-
 	public func union(set: Set<Element>) -> Set<Element> {
 		return self + set
 	}
 
 	public func intersection(other: Set<Element>) -> Set<Element> {
 		if self.count <= other.count {
-			return self.filtered { other.contains($0) }
+			return Set(filter(self) { other.contains($0) })
 		} else {
-			return other.filtered { self.contains($0) }
+			return Set(filter(other) { self.contains($0) })
 		}
 	}
 
 	public func difference(other: Set<Element>) -> Set<Element> {
-		return self.filtered { !other.contains($0) }
+		return Set(filter(self) { !other.contains($0) })
 	}
 }
 
