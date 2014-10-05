@@ -85,11 +85,49 @@ extension Set : ExtensibleCollectionType {
 }
 
 
+/// Set operations (union, intersection, difference)
+extension Set {
+	public func filtered(includeElement: (Element) -> Bool) -> Set<Element> {
+		var result = Set<Element>()
+		for element in self {
+			if includeElement(element) {
+				result.insert(element)
+			}
+		}
+		return result
+	}
+
+	public func union(set: Set<Element>) -> Set<Element> {
+		return self + set
+	}
+
+	public func intersection(other: Set<Element>) -> Set<Element> {
+		if self.count <= other.count {
+			return self.filtered { other.contains($0) }
+		} else {
+			return other.filtered { self.contains($0) }
+		}
+	}
+
+	public func difference(other: Set<Element>) -> Set<Element> {
+		return self.filtered { !other.contains($0) }
+	}
+}
+
 /// Extends /c set with the elements of /c sequence.
 public func += <S : SequenceType> (inout set: Set<S.Generator.Element>, sequence: S) {
 	set.extend(sequence)
 }
 
+// Set difference
+public func - <Element> (set: Set<Element>, other: Set<Element>) -> Set<Element> {
+	return set.difference(other)
+}
+
+// Set intersection
+public func & <Element> (set: Set<Element>, other: Set<Element>) -> Set<Element> {
+	return set.intersection(other)
+}
 
 /// ArrayLiteralConvertible conformance.
 extension Set : ArrayLiteralConvertible {
