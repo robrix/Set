@@ -42,10 +42,7 @@ public struct Set<Element : Hashable> {
 /// SequenceType conformance.
 extension Set : SequenceType {
 	public func generate() -> GeneratorOf<Element> {
-		var generator = values.keys.generate()
-		return GeneratorOf {
-			return generator.next()
-		}
+		return GeneratorOf(values.keys.generate())
 	}
 }
 
