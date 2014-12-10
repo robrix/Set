@@ -1,7 +1,7 @@
 //  Copyright (c) 2014 Rob Rix. All rights reserved.
 
 /// A set of unique elements.
-public struct Set<Element: Hashable>: CollectionType, SequenceType {
+public struct Set<Element: Hashable>: CollectionType, ExtensibleCollectionType, SequenceType {
 	// MARK: Constructors
 
 	/// Constructs a `Set` with the elements of `sequence`.
@@ -59,31 +59,23 @@ public struct Set<Element: Hashable>: CollectionType, SequenceType {
 
 	// MARK: CollectionType
 
-	public typealias IndexType = DictionaryIndex<Element, Unit>
-	public var startIndex: IndexType { return values.startIndex }
-	public var endIndex: IndexType { return values.endIndex }
+	public var startIndex: DictionaryIndex<Element, Unit> { return values.startIndex }
+	public var endIndex: DictionaryIndex<Element, Unit> { return values.endIndex }
 
 	public subscript(v: ()) -> Element {
 		get { return values[values.startIndex].0 }
 		set { insert(newValue) }
 	}
 
-	public subscript(index: IndexType) -> Element {
+	public subscript(index: DictionaryIndex<Element, Unit>) -> Element {
 		return values[index].0
 	}
 
 
-	// MARK: Private
+	// MARK: ExtensibleCollectionType
 
-	/// The underlying dictionary.
-	private var values: [Element: Unit]
-}
-
-
-/// ExtensibleCollectionType conformance.
-extension Set: ExtensibleCollectionType {
 	/// In theory, reserve capacity for `n` elements. However, Dictionary does not implement reserveCapacity(), so we just silently ignore it.
-	public func reserveCapacity(n: IndexType.Distance) {}
+	public func reserveCapacity(n: Set<Element>.Index.Distance) {}
 
 	/// Inserts each element of `sequence` into the receiver.
 	public mutating func extend<S: SequenceType where S.Generator.Element == Element>(sequence: S) {
@@ -97,6 +89,12 @@ extension Set: ExtensibleCollectionType {
 	public mutating func append(element: Element) {
 		insert(element)
 	}
+
+
+	// MARK: Private
+
+	/// The underlying dictionary.
+	private var values: [Element: Unit]
 }
 
 
