@@ -2,6 +2,8 @@
 
 /// A set of unique elements.
 public struct Set<Element: Hashable> {
+	// MARK: Constructors
+
 	public init<S: SequenceType where S.Generator.Element == Element>(_ sequence: S) {
 		self.values = [:]
 		extend(sequence)
@@ -15,6 +17,9 @@ public struct Set<Element: Hashable> {
 		self.values = [Element:Unit](minimumCapacity: minimumCapacity)
 	}
 
+
+	// MARK: Properties
+
 	/// The number of entries in the set.
 	public var count: Int { return values.count }
 
@@ -22,6 +27,9 @@ public struct Set<Element: Hashable> {
 	public var isEmpty: Bool {
 		return self.values.isEmpty
 	}
+
+
+	// MARK: Primitive methods
 
 	public func contains(element: Element) -> Bool {
 		return values[element] != nil
@@ -35,7 +43,10 @@ public struct Set<Element: Hashable> {
 		values.removeValueForKey(element)
 	}
 
-	private var values: [Element:Unit]
+
+	// MARK: Private
+
+	private var values: [Element: Unit]
 }
 
 
