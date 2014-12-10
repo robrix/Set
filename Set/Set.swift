@@ -4,15 +4,18 @@
 public struct Set<Element: Hashable> {
 	// MARK: Constructors
 
+	/// Constructs a `Set` with the elements of `sequence`.
 	public init<S: SequenceType where S.Generator.Element == Element>(_ sequence: S) {
 		self.values = [:]
 		extend(sequence)
 	}
 
+	/// Constructs the empty `Set`.
 	public init() {
 		self.values = [:]
 	}
 
+	/// Constructs a `Set` with a hint as to the capacity it should allocate.
 	public init(minimumCapacity: Int) {
 		self.values = [Element:Unit](minimumCapacity: minimumCapacity)
 	}
@@ -31,14 +34,17 @@ public struct Set<Element: Hashable> {
 
 	// MARK: Primitive methods
 
+	/// True iff `element` is in the receiver, as defined by its hash and equality.
 	public func contains(element: Element) -> Bool {
 		return values[element] != nil
 	}
 
+	/// Inserts `element` into the receiver, if it doesn’t already exist.
 	public mutating func insert(element: Element) {
 		values[element] = Unit()
 	}
 
+	/// Removes `element` from the receiver, if it’s a member.
 	public mutating func remove(element: Element) {
 		values.removeValueForKey(element)
 	}
@@ -46,6 +52,7 @@ public struct Set<Element: Hashable> {
 
 	// MARK: Private
 
+	/// The underlying dictionary.
 	private var values: [Element: Unit]
 }
 
@@ -87,6 +94,7 @@ extension Set: ExtensibleCollectionType {
 		}
 	}
 
+	/// Appends `element` onto the `Set`.
 	public mutating func append(element: Element) {
 		insert(element)
 	}
@@ -175,6 +183,7 @@ public func == <Element: Hashable> (a: Set<Element>, b: Set<Element>) -> Bool {
 
 /// Set is reducible.
 extension Set {
+	/// Combines each element of the receiver with an accumulator value using `combine`, starting with `initial`.
 	public func reduce<Into>(initial: Into, combine: (Into, Element) -> Into) -> Into {
 		return Swift.reduce(self, initial, combine)
 	}
