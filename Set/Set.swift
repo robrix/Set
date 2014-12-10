@@ -1,7 +1,7 @@
 //  Copyright (c) 2014 Rob Rix. All rights reserved.
 
 /// A set of unique elements.
-public struct Set<Element: Hashable>: ArrayLiteralConvertible, CollectionType, ExtensibleCollectionType, Printable, SequenceType {
+public struct Set<Element: Hashable>: ArrayLiteralConvertible, CollectionType, ExtensibleCollectionType, Hashable, Printable, SequenceType {
 	// MARK: Constructors
 
 	/// Constructs a `Set` with the elements of `sequence`.
@@ -136,6 +136,27 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, CollectionType, E
 	}
 
 
+	// MARK: Hashable
+
+	/// Hashes using Bob Jenkins’ one-at-a-time hash.
+	///
+	/// http://en.wikipedia.org/wiki/Jenkins_hash_function#one-at-a-time
+	///
+	/// NB: Jenkins’ usage appears to have been string keys; the usage employed here seems similar but may have subtle differences which have yet to be discovered.
+	public var hashValue: Int {
+		var h = reduce(0) { into, each in
+			var h = into + each.hashValue
+			h += (h << 10)
+			h ^= (h >> 6)
+			return h
+		}
+		h += (h << 3)
+		h ^= (h >> 11)
+		h += (h << 15)
+		return h
+	}
+
+
 	// MARK: Printable
 
 	public var description: String {
@@ -188,23 +209,4 @@ public func & <Element> (set: Set<Element>, other: Set<Element>) -> Set<Element>
 /// Defines equality for sets of equatable elements.
 public func == <Element: Hashable> (a: Set<Element>, b: Set<Element>) -> Bool {
 	return a.values == b.values
-}
-
-
-/// Hashable conformance.
-///
-/// This hash function has not been proven in this usage, but is based on Bob Jenkins’ one-at-a-time hash.
-extension Set: Hashable {
-	public var hashValue: Int {
-		var h = reduce(0) { into, each in
-			var h = into + each.hashValue
-			h += (h << 10)
-			h ^= (h >> 6)
-			return h
-		}
-		h += (h << 3)
-		h ^= (h >> 11)
-		h += (h << 15)
-		return h
-	}
 }
