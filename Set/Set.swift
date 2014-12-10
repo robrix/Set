@@ -8,11 +8,11 @@ public struct Set<Element: Hashable> {
 		self.values = [:]
 		extend(sequence)
 	}
-	
+
 	public init() {
 		self.values = [:]
 	}
-	
+
 	public init(minimumCapacity: Int) {
 		self.values = [Element:Unit](minimumCapacity: minimumCapacity)
 	}
@@ -34,11 +34,11 @@ public struct Set<Element: Hashable> {
 	public func contains(element: Element) -> Bool {
 		return values[element] != nil
 	}
-	
+
 	public mutating func insert(element: Element) {
 		values[element] = Unit()
 	}
-	
+
 	public mutating func remove(element: Element) {
 		values.removeValueForKey(element)
 	}
@@ -63,12 +63,12 @@ extension Set: CollectionType {
 	public typealias IndexType = DictionaryIndex<Element, Unit>
 	public var startIndex: IndexType { return values.startIndex }
 	public var endIndex: IndexType { return values.endIndex }
-	
+
 	public subscript(v: ()) -> Element {
 	get { return values[values.startIndex].0 }
 	set { insert(newValue) }
 	}
-	
+
 	public subscript(index: IndexType) -> Element {
 		return values[index].0
 	}
@@ -78,7 +78,7 @@ extension Set: CollectionType {
 extension Set: ExtensibleCollectionType {
 	/// In theory, reserve capacity for \c n elements. However, Dictionary does not implement reserveCapacity(), so we just silently ignore it.
 	public func reserveCapacity(n: IndexType.Distance) {}
-	
+
 	/// Inserts each element of \c sequence into the receiver.
 	public mutating func extend<S: SequenceType where S.Generator.Element == Element>(sequence: S) {
 		// Note that this should just be for each in sequence; this is working around a compiler crasher.
@@ -185,7 +185,7 @@ extension Set {
 extension Set: Printable {
 	public var description: String {
 		if self.count == 0 { return "{}" }
-		
+
 		let joined = join(", ", map(toString))
 		return "{ \(joined) }"
 	}
