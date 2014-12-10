@@ -1,7 +1,7 @@
 //  Copyright (c) 2014 Rob Rix. All rights reserved.
 
 /// A set of unique elements.
-public struct Set<Element: Hashable>: CollectionType, ExtensibleCollectionType, SequenceType {
+public struct Set<Element: Hashable>: ArrayLiteralConvertible, CollectionType, ExtensibleCollectionType, SequenceType {
 	// MARK: Constructors
 
 	/// Constructs a `Set` with the elements of `sequence`.
@@ -88,6 +88,13 @@ public struct Set<Element: Hashable>: CollectionType, ExtensibleCollectionType, 
 	}
 
 
+	// MARK: ArrayLiteralConvertible
+
+	public init(arrayLiteral elements: Element...) {
+		self.init(elements)
+	}
+
+
 	// MARK: SequenceType
 
 	public func generate() -> GeneratorOf<Element> {
@@ -165,13 +172,6 @@ public func &= <Element> (inout set: Set<Element>, other: Set<Element>) {
 /// Returns the intersection of `set` and `other`.
 public func & <Element> (set: Set<Element>, other: Set<Element>) -> Set<Element> {
 	return set.intersection(other)
-}
-
-/// ArrayLiteralConvertible conformance.
-extension Set: ArrayLiteralConvertible {
-	public init(arrayLiteral elements: Element...) {
-		self.init(elements)
-	}
 }
 
 
