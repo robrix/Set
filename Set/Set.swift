@@ -6,18 +6,18 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 
 	/// Constructs a `Set` with the elements of `sequence`.
 	public init<S: SequenceType where S.Generator.Element == Element>(_ sequence: S) {
-		self.values = [:]
+		self.init(values: [:])
 		extend(sequence)
 	}
 
 	/// Constructs the empty `Set`.
 	public init() {
-		self.values = [:]
+		self.init(values: [:])
 	}
 
 	/// Constructs a `Set` with a hint as to the capacity it should allocate.
 	public init(minimumCapacity: Int) {
-		self.values = [Element:Unit](minimumCapacity: minimumCapacity)
+		self.init(values: [Element:Unit](minimumCapacity: minimumCapacity))
 	}
 
 
@@ -167,6 +167,11 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 
 
 	// MARK: Private
+
+	/// Constructs a `Set` with a dictionary of `values`.
+	private init(values: [Element: Unit]) {
+		self.values = values
+	}
 
 	/// The underlying dictionary.
 	private var values: [Element: Unit]
