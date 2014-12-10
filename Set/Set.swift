@@ -210,6 +210,6 @@ public func & <Element> (set: Set<Element>, other: Set<Element>) -> Set<Element>
 
 
 /// Defines equality for sets of equatable elements.
-public func == <Element: Hashable> (a: Set<Element>, b: Set<Element>) -> Bool {
+public func == <Element> (a: Set<Element>, b: Set<Element>) -> Bool {
 	return a.values == b.values
 }
