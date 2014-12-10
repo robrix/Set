@@ -50,6 +50,28 @@ public struct Set<Element: Hashable>: CollectionType, ExtensibleCollectionType, 
 	}
 
 
+	// MARK: Algebraic operations
+
+	/// Returns the union of the receiver and `set`.
+	public func union(set: Set) -> Set {
+		return self + set
+	}
+
+	/// Returns the intersection of the receiver and `set`.
+	public func intersection(set: Set) -> Set {
+		if self.count <= set.count {
+			return Set(filter(self) { set.contains($0) })
+		} else {
+			return Set(filter(set) { self.contains($0) })
+		}
+	}
+
+	/// Returns a new set with all elements from the receiver which are not contained in `set`.
+	public func difference(set: Set) -> Set {
+		return Set(filter(self) { !set.contains($0) })
+	}
+
+
 	// MARK: SequenceType
 
 	public func generate() -> GeneratorOf<Element> {
@@ -97,28 +119,6 @@ public struct Set<Element: Hashable>: CollectionType, ExtensibleCollectionType, 
 	private var values: [Element: Unit]
 }
 
-
-/// Set operations (union, intersection, difference).
-extension Set {
-	/// Returns the union of the receiver and `set`.
-	public func union(set: Set) -> Set {
-		return self + set
-	}
-
-	/// Returns the intersection of the receiver and `set`.
-	public func intersection(set: Set) -> Set {
-		if self.count <= set.count {
-			return Set(filter(self) { set.contains($0) })
-		} else {
-			return Set(filter(set) { self.contains($0) })
-		}
-	}
-
-	/// Returns a new set with all elements from the receiver which are not contained in `set`.
-	public func difference(set: Set) -> Set {
-		return Set(filter(self) { !set.contains($0) })
-	}
-}
 
 /// Higher-order functions.
 extension Set {
