@@ -85,12 +85,12 @@ extension Set : ExtensibleCollectionType {
 /// Set operations (union, intersection, difference).
 extension Set {
 	/// Returns the union of \c self and \c set.
-	public func union(set: Set<Element>) -> Set<Element> {
+	public func union(set: Set) -> Set {
 		return self + set
 	}
 
 	/// Returns the intersection of \c self and \c other.
-	public func intersection(other: Set<Element>) -> Set<Element> {
+	public func intersection(other: Set) -> Set {
 		if self.count <= other.count {
 			return Set(filter(self) { other.contains($0) })
 		} else {
@@ -99,7 +99,7 @@ extension Set {
 	}
 
 	/// Returns a new set with all elements from \c self which are not contained in \c other.
-	public func difference(other: Set<Element>) -> Set<Element> {
+	public func difference(other: Set) -> Set {
 		return Set(filter(self) { !other.contains($0) })
 	}
 }
