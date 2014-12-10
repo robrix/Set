@@ -1,7 +1,7 @@
 //  Copyright (c) 2014 Rob Rix. All rights reserved.
 
 /// A set of unique elements.
-public struct Set<Element: Hashable> {
+public struct Set<Element: Hashable>: SequenceType {
 	// MARK: Constructors
 
 	/// Constructs a `Set` with the elements of `sequence`.
@@ -50,18 +50,17 @@ public struct Set<Element: Hashable> {
 	}
 
 
+	// MARK: SequenceType
+
+	public func generate() -> GeneratorOf<Element> {
+		return GeneratorOf(values.keys.generate())
+	}
+
+
 	// MARK: Private
 
 	/// The underlying dictionary.
 	private var values: [Element: Unit]
-}
-
-
-/// SequenceType conformance.
-extension Set: SequenceType {
-	public func generate() -> GeneratorOf<Element> {
-		return GeneratorOf(values.keys.generate())
-	}
 }
 
 
