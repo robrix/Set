@@ -42,6 +42,19 @@ class SetTests: XCTestCase {
 		XCTAssert(set == Set([1]))
 	}
 
+	func testSubset() {
+		XCTAssert(Set([1]).subset(Set([1, 2, 3])))
+		XCTAssert(Set([1, 3]).subset(Set([1, 2, 3])))
+		XCTAssert(Set([1, 2, 3]).subset(Set([1, 2, 3])))
+		XCTAssertFalse(Set([4]).subset(Set([1, 2, 3])))
+		XCTAssertFalse(Set([1, 2, 3, 4]).subset(Set([1, 2, 3])))
+	}
+
+	func testEmptySetIsAlwaysSubset() {
+		XCTAssert(Set().subset(Set<Int>()))
+		XCTAssert(Set().subset(Set([1, 2, 3])))
+	}
+
 	func testMap() {
 		XCTAssert(Set([1, 2, 3]).map(toString) == Set(["1", "2", "3"]))
 	}
