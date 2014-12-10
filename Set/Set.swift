@@ -106,7 +106,7 @@ extension Set {
 
 /// Higher-order functions.
 extension Set {
-	/// Returns a new set with the result of applying /c transform to each element.
+	/// Returns a new set with the result of applying \c transform to each element.
 	public func map<Result>(transform: Element -> Result) -> Set<Result> {
 		var result = Set<Result>()
 		for element in self {
@@ -115,7 +115,7 @@ extension Set {
 		return result
 	}
 
-	/// Apples /c transform to each element and returns a new set which is the union of each resulting set.
+	/// Apples \c transform to each element and returns a new set which is the union of each resulting set.
 	public func flatmap<Result>(transform: Element -> Set<Result>) -> Set<Result> {
 		var result = Set<Result>()
 		for element in self {
