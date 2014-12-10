@@ -114,7 +114,7 @@ extension Set {
 	/// Apples \c transform to each element and returns a new set which is the union of each resulting set.
 	public func flatMap<Result, S: SequenceType where S.Generator.Element == Result>(transform: Element -> S) -> Set<Result> {
 		return reduce(Set<Result>()) { $0 + transform($1) }
-    }
+	}
 }
 
 /// Extends /c set with the elements of /c sequence.
