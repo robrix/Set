@@ -59,9 +59,9 @@ public struct Set<Element: Hashable>: CollectionType, ExtensibleCollectionType, 
 
 	/// Returns the intersection of the receiver and `set`.
 	public func intersection(set: Set) -> Set {
-		return self.count <= set.count ?
-			Set(filter(self) { set.contains($0) })
-		:	Set(filter(set) { self.contains($0) })
+		return Set(self.count <= set.count ?
+			filter(self) { set.contains($0) }
+		:	filter(set) { self.contains($0) })
 	}
 
 	/// Returns a new set with all elements from the receiver which are not contained in `set`.
