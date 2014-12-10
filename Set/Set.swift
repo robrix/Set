@@ -114,6 +114,15 @@ extension Set {
 		}
 		return result
 	}
+
+	/// Apples /c transform to each element and returns a new set which is the union of each resulting set.
+	public func flatmap<Result>(transform: Element -> Set<Result>) -> Set<Result> {
+		var result = Set<Result>()
+		for element in self {
+			result += transform(element)
+		}
+		return result
+    }
 }
 
 /// Extends /c set with the elements of /c sequence.
