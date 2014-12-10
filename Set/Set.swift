@@ -1,7 +1,7 @@
 //  Copyright (c) 2014 Rob Rix. All rights reserved.
 
 /// A set of unique elements.
-public struct Set<Element: Hashable>: SequenceType {
+public struct Set<Element: Hashable>: CollectionType, SequenceType {
 	// MARK: Constructors
 
 	/// Constructs a `Set` with the elements of `sequence`.
@@ -57,28 +57,28 @@ public struct Set<Element: Hashable>: SequenceType {
 	}
 
 
+	// MARK: CollectionType
+
+	public typealias IndexType = DictionaryIndex<Element, Unit>
+	public var startIndex: IndexType { return values.startIndex }
+	public var endIndex: IndexType { return values.endIndex }
+
+	public subscript(v: ()) -> Element {
+		get { return values[values.startIndex].0 }
+		set { insert(newValue) }
+	}
+
+	public subscript(index: IndexType) -> Element {
+		return values[index].0
+	}
+
+
 	// MARK: Private
 
 	/// The underlying dictionary.
 	private var values: [Element: Unit]
 }
 
-
-/// CollectionType conformance.
-extension Set: CollectionType {
-	public typealias IndexType = DictionaryIndex<Element, Unit>
-	public var startIndex: IndexType { return values.startIndex }
-	public var endIndex: IndexType { return values.endIndex }
-
-	public subscript(v: ()) -> Element {
-	get { return values[values.startIndex].0 }
-	set { insert(newValue) }
-	}
-
-	public subscript(index: IndexType) -> Element {
-		return values[index].0
-	}
-}
 
 /// ExtensibleCollectionType conformance.
 extension Set: ExtensibleCollectionType {
