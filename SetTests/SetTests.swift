@@ -41,4 +41,12 @@ class SetTests: XCTestCase {
 
 		XCTAssert(set == Set([1]))
 	}
+
+	func testMap() {
+		XCTAssert(Set([1, 2, 3]).map(toString) == Set(["1", "2", "3"]))
+	}
+
+	func testFlatmapReturnsTheUnionOfAllResultingSets() {
+		XCTAssert(Set([1, 2]).flatMap { [$0, $0 * 2] } == Set([1, 2, 4]))
+	}
 }
