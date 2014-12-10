@@ -1,7 +1,7 @@
 //  Copyright (c) 2014 Rob Rix. All rights reserved.
 
 /// A set of unique elements.
-public struct Set<Element: Hashable>: ArrayLiteralConvertible, CollectionType, ExtensibleCollectionType, SequenceType {
+public struct Set<Element: Hashable>: ArrayLiteralConvertible, CollectionType, ExtensibleCollectionType, Printable, SequenceType {
 	// MARK: Constructors
 
 	/// Constructs a `Set` with the elements of `sequence`.
@@ -136,6 +136,16 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, CollectionType, E
 	}
 
 
+	// MARK: Printable
+
+	public var description: String {
+		if self.count == 0 { return "{}" }
+
+		let joined = join(", ", map(toString))
+		return "{ \(joined) }"
+	}
+
+
 	// MARK: Private
 
 	/// The underlying dictionary.
@@ -178,17 +188,6 @@ public func & <Element> (set: Set<Element>, other: Set<Element>) -> Set<Element>
 /// Defines equality for sets of equatable elements.
 public func == <Element: Hashable> (a: Set<Element>, b: Set<Element>) -> Bool {
 	return a.values == b.values
-}
-
-
-/// Printable conformance.
-extension Set: Printable {
-	public var description: String {
-		if self.count == 0 { return "{}" }
-
-		let joined = join(", ", map(toString))
-		return "{ \(joined) }"
-	}
 }
 
 
