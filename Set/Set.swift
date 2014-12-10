@@ -1,8 +1,8 @@
 //  Copyright (c) 2014 Rob Rix. All rights reserved.
 
 /// A set of unique elements.
-public struct Set<Element : Hashable> {
-	public init<S : SequenceType where S.Generator.Element == Element>(_ sequence: S) {
+public struct Set<Element: Hashable> {
+	public init<S: SequenceType where S.Generator.Element == Element>(_ sequence: S) {
 		self.values = [:]
 		extend(sequence)
 	}
@@ -40,7 +40,7 @@ public struct Set<Element : Hashable> {
 
 
 /// SequenceType conformance.
-extension Set : SequenceType {
+extension Set: SequenceType {
 	public func generate() -> GeneratorOf<Element> {
 		return GeneratorOf(values.keys.generate())
 	}
@@ -48,7 +48,7 @@ extension Set : SequenceType {
 
 
 /// CollectionType conformance.
-extension Set : CollectionType {
+extension Set: CollectionType {
 	public typealias IndexType = DictionaryIndex<Element, Unit>
 	public var startIndex: IndexType { return values.startIndex }
 	public var endIndex: IndexType { return values.endIndex }
@@ -64,12 +64,12 @@ extension Set : CollectionType {
 }
 
 /// ExtensibleCollectionType conformance.
-extension Set : ExtensibleCollectionType {
+extension Set: ExtensibleCollectionType {
 	/// In theory, reserve capacity for \c n elements. However, Dictionary does not implement reserveCapacity(), so we just silently ignore it.
 	public func reserveCapacity(n: IndexType.Distance) {}
 	
 	/// Inserts each element of \c sequence into the receiver.
-	public mutating func extend<S : SequenceType where S.Generator.Element == Element>(sequence: S) {
+	public mutating func extend<S: SequenceType where S.Generator.Element == Element>(sequence: S) {
 		// Note that this should just be for each in sequence; this is working around a compiler crasher.
 		for each in [Element](sequence) {
 			insert(each)
@@ -118,7 +118,7 @@ extension Set {
 }
 
 /// Extends \c set with the elements of \c sequence.
-public func += <S : SequenceType> (inout set: Set<S.Generator.Element>, sequence: S) {
+public func += <S: SequenceType> (inout set: Set<S.Generator.Element>, sequence: S) {
 	set.extend(sequence)
 }
 
@@ -149,7 +149,7 @@ public func & <Element> (set: Set<Element>, other: Set<Element>) -> Set<Element>
 }
 
 /// ArrayLiteralConvertible conformance.
-extension Set : ArrayLiteralConvertible {
+extension Set: ArrayLiteralConvertible {
 	public init(arrayLiteral elements: Element...) {
 		self.init(elements)
 	}
@@ -157,7 +157,7 @@ extension Set : ArrayLiteralConvertible {
 
 
 /// Defines equality for sets of equatable elements.
-public func == <Element : Hashable> (a: Set<Element>, b: Set<Element>) -> Bool {
+public func == <Element: Hashable> (a: Set<Element>, b: Set<Element>) -> Bool {
 	return a.values == b.values
 }
 
@@ -171,7 +171,7 @@ extension Set {
 
 
 /// Printable conformance.
-extension Set : Printable {
+extension Set: Printable {
 	public var description: String {
 		if self.count == 0 { return "{}" }
 		
@@ -184,7 +184,7 @@ extension Set : Printable {
 /// Hashable conformance.
 ///
 /// This hash function has not been proven in this usage, but is based on Bob Jenkins’ one-at-a-time hash.
-extension Set : Hashable {
+extension Set: Hashable {
 	public var hashValue: Int {
 		var h = reduce(0) { into, each in
 			var h = into + each.hashValue
