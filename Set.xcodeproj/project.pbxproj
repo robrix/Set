@@ -62,6 +62,7 @@
 				D439CFA719575720005BD842 /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		D439CFA719575720005BD842 /* Products */ = {
 			isa = PBXGroup;
