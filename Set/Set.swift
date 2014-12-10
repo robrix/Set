@@ -174,10 +174,13 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 }
 
 
+// MARK: - Operators
+
 /// Extends a `set` with the elements of a `sequence`.
 public func += <S: SequenceType> (inout set: Set<S.Generator.Element>, sequence: S) {
 	set.extend(sequence)
 }
+
 
 /// Returns a new set with all elements from `set` which are not contained in `other`.
 public func - <Element> (set: Set<Element>, other: Set<Element>) -> Set<Element> {
@@ -190,6 +193,7 @@ public func -= <Element> (inout set: Set<Element>, other: Set<Element>) {
 		set.remove(element)
 	}
 }
+
 
 /// Intersects with `set` with `other`.
 public func &= <Element> (inout set: Set<Element>, other: Set<Element>) {
