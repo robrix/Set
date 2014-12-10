@@ -104,6 +104,18 @@ extension Set {
 	}
 }
 
+/// Higher-order functions.
+extension Set {
+	/// Returns a new set with the result of applying /c transform to each element.
+	public func map<Result>(transform: Element -> Result) -> Set<Result> {
+		var result = Set<Result>()
+		for element in self {
+			result.insert(transform(element))
+		}
+		return result
+	}
+}
+
 /// Extends /c set with the elements of /c sequence.
 public func += <S : SequenceType> (inout set: Set<S.Generator.Element>, sequence: S) {
 	set.extend(sequence)
@@ -162,7 +174,7 @@ extension Set : Printable {
 	public var description: String {
 		if self.count == 0 { return "{}" }
 		
-		let joined = join(", ", map(self) { toString($0) })
+		let joined = join(", ", map { toString($0) })
 		return "{ \(joined) }"
 	}
 }
