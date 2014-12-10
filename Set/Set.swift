@@ -70,6 +70,24 @@ public struct Set<Element: Hashable>: CollectionType, ExtensibleCollectionType, 
 	}
 
 
+	// MARK: Higher-order functions
+
+	/// Returns a new set with the result of applying `transform` to each element.
+	public func map<Result>(transform: Element -> Result) -> Set<Result> {
+		return flatMap { [transform($0)] }
+	}
+
+	/// Applies `transform` to each element and returns a new set which is the union of each resulting set.
+	public func flatMap<Result, S: SequenceType where S.Generator.Element == Result>(transform: Element -> S) -> Set<Result> {
+		return reduce(Set<Result>()) { $0 + transform($1) }
+	}
+
+	/// Combines each element of the receiver with an accumulator value using `combine`, starting with `initial`.
+	public func reduce<Into>(initial: Into, combine: (Into, Element) -> Into) -> Into {
+		return Swift.reduce(self, initial, combine)
+	}
+
+
 	// MARK: SequenceType
 
 	public func generate() -> GeneratorOf<Element> {
@@ -118,19 +136,6 @@ public struct Set<Element: Hashable>: CollectionType, ExtensibleCollectionType, 
 }
 
 
-/// Higher-order functions.
-extension Set {
-	/// Returns a new set with the result of applying `transform` to each element.
-	public func map<Result>(transform: Element -> Result) -> Set<Result> {
-		return flatMap { [transform($0)] }
-	}
-
-	/// Applies `transform` to each element and returns a new set which is the union of each resulting set.
-	public func flatMap<Result, S: SequenceType where S.Generator.Element == Result>(transform: Element -> S) -> Set<Result> {
-		return reduce(Set<Result>()) { $0 + transform($1) }
-	}
-}
-
 /// Extends a `set` with the elements of a `sequence`.
 public func += <S: SequenceType> (inout set: Set<S.Generator.Element>, sequence: S) {
 	set.extend(sequence)
@@ -173,15 +178,6 @@ extension Set: ArrayLiteralConvertible {
 /// Defines equality for sets of equatable elements.
 public func == <Element: Hashable> (a: Set<Element>, b: Set<Element>) -> Bool {
 	return a.values == b.values
-}
-
-
-/// Set is reducible.
-extension Set {
-	/// Combines each element of the receiver with an accumulator value using `combine`, starting with `initial`.
-	public func reduce<Into>(initial: Into, combine: (Into, Element) -> Into) -> Into {
-		return Swift.reduce(self, initial, combine)
-	}
 }
 
 
