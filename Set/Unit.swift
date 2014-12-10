@@ -5,6 +5,6 @@ public struct Unit {}
 
 
 /// Unit is Equatable.
-extension Unit : Equatable {}
+extension Unit: Equatable {}
 
 public func == (a: Unit, b: Unit) -> Bool { return true }
