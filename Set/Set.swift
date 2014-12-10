@@ -160,10 +160,9 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	// MARK: Printable
 
 	public var description: String {
-		if self.count == 0 { return "{}" }
-
-		let joined = join(", ", map(toString))
-		return "{ \(joined) }"
+		return count > 0 ?
+			"{" + join(", ", map(toString)) + "}"
+		:	"{}"
 	}
 
 
