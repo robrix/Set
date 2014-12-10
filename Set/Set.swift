@@ -1,6 +1,6 @@
 //  Copyright (c) 2014 Rob Rix. All rights reserved.
 
-/// A set of unique elements.
+/// A set of unique elements as determined by `hashValue` and `==`.
 public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollectionType, Hashable, Printable {
 	// MARK: Constructors
 
