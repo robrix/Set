@@ -74,6 +74,11 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 		return difference(set) == Set()
 	}
 
+	/// True iff the receiver is a superset of (contains) `set`.
+	public func superset(set: Set) -> Bool {
+		return set.subset(self)
+	}
+
 
 	// MARK: Higher-order functions
 
