@@ -175,7 +175,7 @@ extension Set : Printable {
 	public var description: String {
 		if self.count == 0 { return "{}" }
 		
-		let joined = join(", ", map { toString($0) })
+		let joined = join(", ", map(toString))
 		return "{ \(joined) }"
 	}
 }

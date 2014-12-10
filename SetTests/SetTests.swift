@@ -43,7 +43,7 @@ class SetTests: XCTestCase {
 	}
 
 	func testMap() {
-		XCTAssert(Set([1, 2, 3]).map { toString($0) } == Set(["1", "2", "3"]))
+		XCTAssert(Set([1, 2, 3]).map(toString) == Set(["1", "2", "3"]))
 	}
 
 	func testFlatmapReturnsTheUnionOfAllResultingSets() {
