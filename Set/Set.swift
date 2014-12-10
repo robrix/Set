@@ -83,10 +83,10 @@ extension Set: CollectionType {
 
 /// ExtensibleCollectionType conformance.
 extension Set: ExtensibleCollectionType {
-	/// In theory, reserve capacity for \c n elements. However, Dictionary does not implement reserveCapacity(), so we just silently ignore it.
+	/// In theory, reserve capacity for `n` elements. However, Dictionary does not implement reserveCapacity(), so we just silently ignore it.
 	public func reserveCapacity(n: IndexType.Distance) {}
 
-	/// Inserts each element of \c sequence into the receiver.
+	/// Inserts each element of `sequence` into the receiver.
 	public mutating func extend<S: SequenceType where S.Generator.Element == Element>(sequence: S) {
 		// Note that this should just be for each in sequence; this is working around a compiler crasher.
 		for each in [Element](sequence) {
@@ -103,57 +103,57 @@ extension Set: ExtensibleCollectionType {
 
 /// Set operations (union, intersection, difference).
 extension Set {
-	/// Returns the union of \c self and \c set.
+	/// Returns the union of the receiver and `set`.
 	public func union(set: Set) -> Set {
 		return self + set
 	}
 
-	/// Returns the intersection of \c self and \c other.
-	public func intersection(other: Set) -> Set {
-		if self.count <= other.count {
-			return Set(filter(self) { other.contains($0) })
+	/// Returns the intersection of the receiver and `set`.
+	public func intersection(set: Set) -> Set {
+		if self.count <= set.count {
+			return Set(filter(self) { set.contains($0) })
 		} else {
-			return Set(filter(other) { self.contains($0) })
+			return Set(filter(set) { self.contains($0) })
 		}
 	}
 
-	/// Returns a new set with all elements from \c self which are not contained in \c other.
-	public func difference(other: Set) -> Set {
-		return Set(filter(self) { !other.contains($0) })
+	/// Returns a new set with all elements from the receiver which are not contained in `set`.
+	public func difference(set: Set) -> Set {
+		return Set(filter(self) { !set.contains($0) })
 	}
 }
 
 /// Higher-order functions.
 extension Set {
-	/// Returns a new set with the result of applying \c transform to each element.
+	/// Returns a new set with the result of applying `transform` to each element.
 	public func map<Result>(transform: Element -> Result) -> Set<Result> {
 		return flatMap { [transform($0)] }
 	}
 
-	/// Apples \c transform to each element and returns a new set which is the union of each resulting set.
+	/// Applies `transform` to each element and returns a new set which is the union of each resulting set.
 	public func flatMap<Result, S: SequenceType where S.Generator.Element == Result>(transform: Element -> S) -> Set<Result> {
 		return reduce(Set<Result>()) { $0 + transform($1) }
 	}
 }
 
-/// Extends \c set with the elements of \c sequence.
+/// Extends a `set` with the elements of a `sequence`.
 public func += <S: SequenceType> (inout set: Set<S.Generator.Element>, sequence: S) {
 	set.extend(sequence)
 }
 
-/// Returns a new set with all elements from \c set which are not contained in \c other.
+/// Returns a new set with all elements from `set` which are not contained in `other`.
 public func - <Element> (set: Set<Element>, other: Set<Element>) -> Set<Element> {
 	return set.difference(other)
 }
 
-/// Removes all elements in \c other from \c set.
+/// Removes all elements in `other` from `set`.
 public func -= <Element> (inout set: Set<Element>, other: Set<Element>) {
 	for element in other {
 		set.remove(element)
 	}
 }
 
-/// Intersects with \c set with \c other.
+/// Intersects with `set` with `other`.
 public func &= <Element> (inout set: Set<Element>, other: Set<Element>) {
 	for element in set {
 		if !other.contains(element) {
@@ -162,7 +162,7 @@ public func &= <Element> (inout set: Set<Element>, other: Set<Element>) {
 	}
 }
 
-/// Returns the intersection of \c set and \c other.
+/// Returns the intersection of `set` and `other`.
 public func & <Element> (set: Set<Element>, other: Set<Element>) -> Set<Element> {
 	return set.intersection(other)
 }
