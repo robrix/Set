@@ -44,9 +44,6 @@ class SetTests: XCTestCase {
 
 	func testSubset() {
 		XCTAssert(Set([1]).subset(Set([1, 2, 3])))
-		XCTAssert(Set([1, 3]).subset(Set([1, 2, 3])))
-		XCTAssertFalse(Set([4]).subset(Set([1, 2, 3])))
-		XCTAssertFalse(Set([1, 2, 3, 4]).subset(Set([1, 2, 3])))
 	}
 
 	func testStrictSubset() {
@@ -58,6 +55,10 @@ class SetTests: XCTestCase {
 		XCTAssert(Set([1, 2, 3]).subset(Set([1, 2, 3])))
 	}
 
+	func testStrictSupersetIsNotSubset() {
+		XCTAssertFalse(Set([1, 2, 3, 4]).subset(Set([1, 2, 3])))
+	}
+
 	func testEmptySetIsAlwaysSubset() {
 		XCTAssert(Set().subset(Set<Int>()))
 		XCTAssert(Set().subset(Set([1, 2, 3])))
@@ -65,9 +66,6 @@ class SetTests: XCTestCase {
 
 	func testSuperset() {
 		XCTAssert(Set([1, 2, 3]).superset(Set([1])))
-		XCTAssert(Set([1, 2, 3]).superset(Set([1, 3])))
-		XCTAssertFalse(Set([1, 2, 3]).superset(Set([4])))
-		XCTAssertFalse(Set([1, 2, 3]).superset(Set([1, 2, 3, 4])))
 	}
 
 	func testStrictSuperset() {
@@ -77,6 +75,10 @@ class SetTests: XCTestCase {
 
 	func testSupersetIncludesSelf() {
 		XCTAssert(Set([1, 2, 3]).superset(Set([1, 2, 3])))
+	}
+
+	func testStrictSubsetIsNotSuperset() {
+		XCTAssertFalse(Set([1, 2, 3]).superset(Set([1, 2, 3, 4])))
 	}
 
 	func testAlwaysSupersetOfEmptySet() {
