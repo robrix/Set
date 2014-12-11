@@ -69,6 +69,9 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 		return Set(filter(self) { !set.contains($0) })
 	}
 
+
+	// MARK: Set inclusion functions
+
 	/// True iff the receiver is a subset of (is included in) `set`.
 	public func subset(set: Set) -> Bool {
 		return difference(set) == Set()
