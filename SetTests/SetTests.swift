@@ -49,6 +49,11 @@ class SetTests: XCTestCase {
 		XCTAssertFalse(Set([1, 2, 3, 4]).subset(Set([1, 2, 3])))
 	}
 
+	func testStrictSubset() {
+		XCTAssert(Set([1]).strictSubset(Set([1, 2])))
+		XCTAssertFalse(Set([1]).strictSubset(Set([1])))
+	}
+
 	func testSubsetIncludesSelf() {
 		XCTAssert(Set([1, 2, 3]).subset(Set([1, 2, 3])))
 	}
@@ -63,6 +68,11 @@ class SetTests: XCTestCase {
 		XCTAssert(Set([1, 2, 3]).superset(Set([1, 3])))
 		XCTAssertFalse(Set([1, 2, 3]).superset(Set([4])))
 		XCTAssertFalse(Set([1, 2, 3]).superset(Set([1, 2, 3, 4])))
+	}
+
+	func testStrictSuperset() {
+		XCTAssert(Set([1, 2]).strictSuperset(Set([1])))
+		XCTAssertFalse(Set([1]).strictSuperset(Set([1])))
 	}
 
 	func testSupersetIncludesSelf() {

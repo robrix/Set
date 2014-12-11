@@ -74,9 +74,19 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 		return difference(set) == Set()
 	}
 
+	/// True if the receiver is a subset of but not equal to `set`.
+	public func strictSubset(set: Set) -> Bool {
+		return subset(set) && self != set
+	}
+
 	/// True iff the receiver is a superset of (includes) `set`.
 	public func superset(set: Set) -> Bool {
 		return set.subset(self)
+	}
+
+	/// True if the receiver is a superset of but not equal to `set`.
+	public func strictSuperset(set: Set) -> Bool {
+		return set.strictSubset(self)
 	}
 
 
