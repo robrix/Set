@@ -70,6 +70,29 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	}
 
 
+	// MARK: Set inclusion functions
+
+	/// True iff the receiver is a subset of (is included in) `set`.
+	public func subset(set: Set) -> Bool {
+		return difference(set) == Set()
+	}
+
+	/// True if the receiver is a subset of but not equal to `set`.
+	public func strictSubset(set: Set) -> Bool {
+		return subset(set) && self != set
+	}
+
+	/// True iff the receiver is a superset of (includes) `set`.
+	public func superset(set: Set) -> Bool {
+		return set.subset(self)
+	}
+
+	/// True if the receiver is a superset of but not equal to `set`.
+	public func strictSuperset(set: Set) -> Bool {
+		return set.strictSubset(self)
+	}
+
+
 	// MARK: Higher-order functions
 
 	/// Returns a new set with the result of applying `transform` to each element.
