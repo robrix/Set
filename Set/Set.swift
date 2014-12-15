@@ -10,6 +10,11 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 		extend(sequence)
 	}
 
+	/// Constructs a `Set` from a variadic parameter list.
+	public init(_ elements: Element...) {
+		self.init(elements)
+	}
+
 	/// Constructs the empty `Set`.
 	public init() {
 		self.init(values: [:])
