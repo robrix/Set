@@ -4,7 +4,11 @@ import XCTest
 import Set
 
 class SetHigherOrderFunctionTests: XCTestCase {
-	func testMap() {
+	func testReducible() {
+		XCTAssert(Set(1, 2, 3).reduce(0, +) == 6)
+	}
+
+	func testMappable() {
 		XCTAssert(Set(1, 2, 3).map(toString) == Set("1", "2", "3"))
 	}
 
