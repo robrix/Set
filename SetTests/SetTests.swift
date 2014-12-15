@@ -4,11 +4,6 @@ import XCTest
 import Set
 
 class SetTests: XCTestCase {
-	func testMinimumCapacity() {
-		let set = Set<Int>(minimumCapacity: 4)
-		XCTAssert(set.isEmpty)
-	}
-	
 	func testUnionAddsElementsFromBothOperands() {
 		XCTAssert(Set([1, 2, 3, 4]) + Set([3, 4, 5]) == Set([1, 2, 3, 4, 5]))
 	}
