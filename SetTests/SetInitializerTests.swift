@@ -14,7 +14,6 @@ class SetInitializerTests: XCTestCase {
 	}
 
 	func testMinimumCapacity() {
-		let set = Set<Int>(minimumCapacity: 4)
-		XCTAssert(set.isEmpty)
+		XCTAssert(Set<Int>(minimumCapacity: 4).isEmpty)
 	}
 }
