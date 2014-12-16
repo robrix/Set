@@ -3,40 +3,7 @@
 import XCTest
 import Set
 
-class SetTests: XCTestCase {
-	func testUnionAddsElementsFromBothOperands() {
-		XCTAssert(Set(1, 2, 3, 4) + Set(3, 4, 5) == Set(1, 2, 3, 4, 5))
-	}
-	
-	func testUnionAssignmentModifiesInPlace() {
-		var c: Set<Int> = [1, 2, 3]
-		c += Set(3, 4, 5)
-		
-		XCTAssert(c == Set(1, 2, 3, 4, 5))
-	}
-
-	func testIntersection() {
-		XCTAssert(Set(1, 2, 3) & Set(2, 3, 4) == Set(2, 3))
-	}
-
-	func testIntersectionAssignment() {
-		var set = Set(1, 2, 3)
-		set &= Set(2, 3, 4)
-
-		XCTAssert(set == Set(2, 3))
-	}
-	
-	func testDifference() {
-		XCTAssert(Set(1, 2, 3) - Set(2, 3, 4) == Set(1))
-	}
-
-	func testDifferenceAssignment() {
-		var set = Set(1, 2, 3)
-		set -= Set(2, 3, 4)
-
-		XCTAssert(set == Set(1))
-	}
-
+class SetInclusionTests: XCTestCase {
 	func testSubset() {
 		XCTAssert(Set(1).subset(Set(1, 2, 3)))
 	}
@@ -79,13 +46,5 @@ class SetTests: XCTestCase {
 	func testAlwaysSupersetOfEmptySet() {
 		XCTAssert(Set<Int>().superset(Set()))
 		XCTAssert(Set(1, 2, 3).superset(Set()))
-	}
-
-	func testMap() {
-		XCTAssert(Set(1, 2, 3).map(toString) == Set("1", "2", "3"))
-	}
-
-	func testFlatMapReturnsTheUnionOfAllResultingSets() {
-		XCTAssert(Set(1, 2).flatMap { [$0, $0 * 2] } == Set(1, 2, 4))
 	}
 }
