@@ -1,7 +1,7 @@
 //  Copyright (c) 2014 Rob Rix. All rights reserved.
 
 /// A set of unique elements as determined by `hashValue` and `==`.
-public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollectionType, Hashable, Printable {
+public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollectionType, Hashable, Printable, DebugPrintable {
 	// MARK: Constructors
 
 	/// Constructs a `Set` with the elements of `sequence`.
@@ -193,6 +193,12 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 		:	"{}"
 	}
 
+	// MARK: DebugPrintable
+	
+	public var debugDescription: String {
+		return description
+	}
+	
 
 	// MARK: Private
 
