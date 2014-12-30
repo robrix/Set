@@ -4,6 +4,10 @@ import XCTest
 import Set
 
 class SetHigherOrderFunctionTests: XCTestCase {
+	func testFilter() {
+		XCTAssert(Set(1, 2, 3).filter { $0 == 2 } == Set(2))
+	}
+
 	func testReducible() {
 		XCTAssert(Set(1, 2, 3).reduce(0, +) == 6)
 	}

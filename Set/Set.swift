@@ -54,6 +54,10 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 		values.removeValueForKey(element)
 	}
 
+	/// Removes all elements from the receiver.
+	public mutating func removeAll() {
+		values = [:]
+	}
 
 	// MARK: Algebraic operations
 
@@ -64,14 +68,14 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 
 	/// Returns the intersection of the receiver and `set`.
 	public func intersection(set: Set) -> Set {
-		return Set(self.count <= set.count ?
-			filter(self) { set.contains($0) }
-		:	filter(set) { self.contains($0) })
+		return self.count <= set.count ?
+			filter { set.contains($0) }
+		:	filter { self.contains($0) }
 	}
 
 	/// Returns a new set with all elements from the receiver which are not contained in `set`.
 	public func difference(set: Set) -> Set {
-		return Set(filter(self) { !set.contains($0) })
+		return filter { !set.contains($0) }
 	}
 
 
@@ -99,6 +103,11 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 
 
 	// MARK: Higher-order functions
+
+	/// Returns a new set including only those elements `x` where `includeElement(x)` is true.
+	public func filter(includeElement: (Element) -> Bool) -> Set<Element> {
+		return Set(Swift.filter(self, includeElement))
+	}
 
 	/// Returns a new set with the result of applying `transform` to each element.
 	public func map<Result>(transform: Element -> Result) -> Set<Result> {
