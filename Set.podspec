@@ -8,7 +8,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "7.0"
   s.osx.deployment_target = "10.9"
   s.source_files = "Set/*.swift"
-  s.public_header_files = [ "Set/Set.h" ]
   s.requires_arc = true
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.description  = <<-DESC
