@@ -244,11 +244,7 @@ public func -= <Element> (inout set: Set<Element>, other: Set<Element>) {
 
 /// Intersects with `set` with `other`.
 public func &= <Element> (inout set: Set<Element>, other: Set<Element>) {
-	for element in set {
-		if !other.contains(element) {
-			set.remove(element)
-		}
-	}
+	set = set.intersection(other)
 }
 
 /// Returns the intersection of `set` and `other`.
