@@ -70,7 +70,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	public func intersection(set: Set) -> Set {
 		return self.count <= set.count ?
 			filter { set.contains($0) }
-		:	filter { self.contains($0) }
+		:	set.filter { self.contains($0) }
 	}
 
 	/// Returns a new set with all elements from the receiver which are not contained in `set`.
