@@ -161,8 +161,10 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 
 	/// Inserts each element of `sequence` into the receiver.
 	public mutating func extend<S: SequenceType where S.Generator.Element == Element>(sequence: S) {
-		// Note that this should just be for each in sequence; this is working around a compiler crasher.
-		for each in [Element](sequence) {
+		// Note that this should just be for each in sequence; this is working around a compiler bug.
+		var generator = sequence.generate()
+		let next: () -> Element? = { generator.next() }
+		for each in GeneratorOf(next) {
 			insert(each)
 		}
 	}
