@@ -236,9 +236,7 @@ public func - <Element> (set: Set<Element>, other: Set<Element>) -> Set<Element>
 
 /// Removes all elements in `other` from `set`.
 public func -= <Element> (inout set: Set<Element>, other: Set<Element>) {
-	for element in other {
-		set.remove(element)
-	}
+	set = set.difference(other)
 }
 
 
