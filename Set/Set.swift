@@ -38,7 +38,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	}
 
 
-	// MARK: Primitive methods
+	// MARK: Primitive operations
 
 	/// True iff `element` is in the receiver, as defined by its hash and equality.
 	public func contains(element: Element) -> Bool {
