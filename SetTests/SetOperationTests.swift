@@ -17,6 +17,8 @@ class SetOperationTests: XCTestCase {
 
 	func testIntersection() {
 		XCTAssert(Set(1, 2, 3) & Set(2, 3, 4) == Set(2, 3))
+		XCTAssert(Set(2, 3) & Set(1, 2, 3, 4) == Set(2, 3))
+		XCTAssert(Set(1, 2, 3, 4) & Set(2, 3) == Set(2, 3))
 	}
 
 	func testIntersectionAssignment() {

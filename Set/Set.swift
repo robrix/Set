@@ -2,6 +2,7 @@
 
 /// A set of unique elements as determined by `hashValue` and `==`.
 public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollectionType, Hashable, Printable, DebugPrintable {
+
 	// MARK: Constructors
 
 	/// Constructs a `Set` with the elements of `sequence`.
@@ -37,7 +38,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	}
 
 
-	// MARK: Primitive methods
+	// MARK: Primitive operations
 
 	/// True iff `element` is in the receiver, as defined by its hash and equality.
 	public func contains(element: Element) -> Bool {
@@ -59,6 +60,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 		values = [:]
 	}
 
+
 	// MARK: Algebraic operations
 
 	/// Returns the union of the receiver and `set`.
@@ -70,7 +72,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	public func intersection(set: Set) -> Set {
 		return self.count <= set.count ?
 			filter { set.contains($0) }
-		:	filter { self.contains($0) }
+		:	set.filter { self.contains($0) }
 	}
 
 	/// Returns a new set with all elements from the receiver which are not contained in `set`.
@@ -105,7 +107,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	// MARK: Higher-order functions
 
 	/// Returns a new set including only those elements `x` where `includeElement(x)` is true.
-	public func filter(includeElement: (Element) -> Bool) -> Set<Element> {
+	public func filter(includeElement: Element -> Bool) -> Set {
 		return Set(Swift.filter(self, includeElement))
 	}
 
@@ -157,12 +159,14 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	// MARK: ExtensibleCollectionType
 
 	/// In theory, reserve capacity for `n` elements. However, Dictionary does not implement reserveCapacity(), so we just silently ignore it.
-	public func reserveCapacity(n: Set<Element>.Index.Distance) {}
+	public func reserveCapacity(n: Set.Index.Distance) {}
 
 	/// Inserts each element of `sequence` into the receiver.
 	public mutating func extend<S: SequenceType where S.Generator.Element == Element>(sequence: S) {
-		// Note that this should just be for each in sequence; this is working around a compiler crasher.
-		for each in [Element](sequence) {
+		// Note that this should just be for each in sequence; this is working around a compiler bug.
+		var generator = sequence.generate()
+		let next: () -> Element? = { generator.next() }
+		for each in GeneratorOf(next) {
 			insert(each)
 		}
 	}
@@ -202,6 +206,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 		:	"{}"
 	}
 
+
 	// MARK: DebugPrintable
 	
 	public var debugDescription: String {
@@ -236,19 +241,13 @@ public func - <Element> (set: Set<Element>, other: Set<Element>) -> Set<Element>
 
 /// Removes all elements in `other` from `set`.
 public func -= <Element> (inout set: Set<Element>, other: Set<Element>) {
-	for element in other {
-		set.remove(element)
-	}
+	set = set.difference(other)
 }
 
 
 /// Intersects with `set` with `other`.
 public func &= <Element> (inout set: Set<Element>, other: Set<Element>) {
-	for element in set {
-		if !other.contains(element) {
-			set.remove(element)
-		}
-	}
+	set = set.intersection(other)
 }
 
 /// Returns the intersection of `set` and `other`.
