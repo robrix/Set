@@ -105,7 +105,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	// MARK: Higher-order functions
 
 	/// Returns a new set including only those elements `x` where `includeElement(x)` is true.
-	public func filter(includeElement: (Element) -> Bool) -> Set<Element> {
+	public func filter(includeElement: (Element) -> Bool) -> Set {
 		return Set(Swift.filter(self, includeElement))
 	}
 
@@ -157,7 +157,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	// MARK: ExtensibleCollectionType
 
 	/// In theory, reserve capacity for `n` elements. However, Dictionary does not implement reserveCapacity(), so we just silently ignore it.
-	public func reserveCapacity(n: Set<Element>.Index.Distance) {}
+	public func reserveCapacity(n: Set.Index.Distance) {}
 
 	/// Inserts each element of `sequence` into the receiver.
 	public mutating func extend<S: SequenceType where S.Generator.Element == Element>(sequence: S) {
