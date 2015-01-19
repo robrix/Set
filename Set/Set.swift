@@ -2,6 +2,7 @@
 
 /// A set of unique elements as determined by `hashValue` and `==`.
 public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollectionType, Hashable, Printable, DebugPrintable {
+
 	// MARK: Constructors
 
 	/// Constructs a `Set` with the elements of `sequence`.
@@ -58,6 +59,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	public mutating func removeAll() {
 		values = [:]
 	}
+
 
 	// MARK: Algebraic operations
 
@@ -203,6 +205,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 			"{" + join(", ", map(toString)) + "}"
 		:	"{}"
 	}
+
 
 	// MARK: DebugPrintable
 	
