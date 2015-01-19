@@ -105,7 +105,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	// MARK: Higher-order functions
 
 	/// Returns a new set including only those elements `x` where `includeElement(x)` is true.
-	public func filter(includeElement: (Element) -> Bool) -> Set {
+	public func filter(includeElement: Element -> Bool) -> Set {
 		return Set(Swift.filter(self, includeElement))
 	}
 
