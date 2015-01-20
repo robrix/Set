@@ -108,7 +108,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 
 	/// Returns a new set including only those elements `x` where `includeElement(x)` is true.
 	public func filter(includeElement: Element -> Bool) -> Set {
-		return Set(Swift.filter(self, includeElement))
+		return Set(lazy(self).filter(includeElement))
 	}
 
 	/// Returns a new set with the result of applying `transform` to each element.
