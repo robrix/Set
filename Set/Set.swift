@@ -210,7 +210,9 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	// MARK: DebugPrintable
 	
 	public var debugDescription: String {
-		return description
+		return count > 0 ?
+			"{" + join(", ", map(toDebugString)) + "}"
+		:	"{}"
 	}
 	
 
