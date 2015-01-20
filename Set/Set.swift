@@ -202,7 +202,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 
 	public var description: String {
 		return count > 0 ?
-			"{" + join(", ", map(toString)) + "}"
+			"{" + join(", ", lazy(self).map(toString)) + "}"
 		:	"{}"
 	}
 
@@ -210,7 +210,9 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	// MARK: DebugPrintable
 	
 	public var debugDescription: String {
-		return description
+		return count > 0 ?
+			"{" + join(", ", lazy(self).map(toDebugString)) + "}"
+		:	"{}"
 	}
 	
 
