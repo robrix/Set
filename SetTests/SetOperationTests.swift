@@ -38,4 +38,8 @@ class SetOperationTests: XCTestCase {
 
 		XCTAssert(set == Set(1))
 	}
+
+	func testDifference() {
+		XCTAssert(Set(1, 2, 3).difference(Set(2, 3, 4)) == Set(1, 4))
+	}
 }

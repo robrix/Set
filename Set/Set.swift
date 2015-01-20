@@ -82,6 +82,13 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 		return filter { !set.contains($0) }
 	}
 
+	/// Returns the symmetric difference of `self` and `set`.
+	///
+	/// This is a new set with all elements that exist only in `self` or `set`, and not both.
+	public func difference(set: Set) -> Set {
+		return union(set) - intersection(set)
+	}
+
 
 	// MARK: Set inclusion functions
 
