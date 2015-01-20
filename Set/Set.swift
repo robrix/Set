@@ -75,9 +75,18 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 		:	set.filter { self.contains($0) }
 	}
 
-	/// Returns a new set with all elements from the receiver which are not contained in `set`.
-	public func difference(set: Set) -> Set {
+	/// Returns the relative complement of `set` in `self`.
+	///
+	/// This is a new set with all elements from the receiver which are not contained in `set`.
+	public func complement(set: Set) -> Set {
 		return filter { !set.contains($0) }
+	}
+
+	/// Returns the symmetric difference of `self` and `set`.
+	///
+	/// This is a new set with all elements that exist only in `self` or `set`, and not both.
+	public func difference(set: Set) -> Set {
+		return union(set) - intersection(set)
 	}
 
 
@@ -85,7 +94,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 
 	/// True iff the receiver is a subset of (is included in) `set`.
 	public func subset(set: Set) -> Bool {
-		return difference(set) == Set()
+		return complement(set) == Set()
 	}
 
 	/// True iff the receiver is a subset of but not equal to `set`.
@@ -238,12 +247,12 @@ public func += <S: SequenceType> (inout set: Set<S.Generator.Element>, sequence:
 
 /// Returns a new set with all elements from `set` which are not contained in `other`.
 public func - <Element> (set: Set<Element>, other: Set<Element>) -> Set<Element> {
-	return set.difference(other)
+	return set.complement(other)
 }
 
 /// Removes all elements in `other` from `set`.
 public func -= <Element> (inout set: Set<Element>, other: Set<Element>) {
-	set = set.difference(other)
+	set = set.complement(other)
 }
 
 

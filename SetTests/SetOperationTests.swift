@@ -28,14 +28,18 @@ class SetOperationTests: XCTestCase {
 		XCTAssert(set == Set(2, 3))
 	}
 	
-	func testDifference() {
+	func testComplement() {
 		XCTAssert(Set(1, 2, 3) - Set(2, 3, 4) == Set(1))
 	}
 
-	func testDifferenceAssignment() {
+	func testComplementAssignment() {
 		var set = Set(1, 2, 3)
 		set -= Set(2, 3, 4)
 
 		XCTAssert(set == Set(1))
+	}
+
+	func testDifference() {
+		XCTAssert(Set(1, 2, 3).difference(Set(2, 3, 4)) == Set(1, 4))
 	}
 }
