@@ -1,5 +1,7 @@
 # Set
 
+![Build status](https://api.travis-ci.org/robrix/Set.svg)
+
 This is a Swift microframework which implements a Dictionary-backed Set.
 
 ## Use
