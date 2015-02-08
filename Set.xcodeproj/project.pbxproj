@@ -10,6 +10,15 @@
 		4ACE19971A3F7C1400A42022 /* SetInclusionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACE19961A3F7C1400A42022 /* SetInclusionTests.swift */; };
 		4ACE19991A3F7CA600A42022 /* SetHigherOrderFunctionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACE19981A3F7CA600A42022 /* SetHigherOrderFunctionTests.swift */; };
 		4AF6FA891A3EBBD500DDC8EE /* SetInitializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF6FA881A3EBBD500DDC8EE /* SetInitializerTests.swift */; };
+		5405C50A1A87AEF2005142E4 /* Set.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5405C4FF1A87AEF1005142E4 /* Set.framework */; };
+		5405C5181A87AEFB005142E4 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = D439CFC21957572E005BD842 /* Set.swift */; };
+		5405C5191A87AEFB005142E4 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40D2667195F0C1100BC535B /* Unit.swift */; };
+		5405C51A1A87AEFE005142E4 /* Set.h in Headers */ = {isa = PBXBuildFile; fileRef = D439CFAB19575720005BD842 /* Set.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5405C51B1A87AF08005142E4 /* SetHigherOrderFunctionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACE19981A3F7CA600A42022 /* SetHigherOrderFunctionTests.swift */; };
+		5405C51C1A87AF08005142E4 /* SetInclusionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACE19961A3F7C1400A42022 /* SetInclusionTests.swift */; };
+		5405C51D1A87AF08005142E4 /* SetInitializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF6FA881A3EBBD500DDC8EE /* SetInitializerTests.swift */; };
+		5405C51E1A87AF08005142E4 /* SetOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D439CFB819575721005BD842 /* SetOperationTests.swift */; };
+		5405C51F1A87AF08005142E4 /* SetPrintableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1A51E1A529DF700A7CEE4 /* SetPrintableTests.swift */; };
 		95B1A51F1A529DF700A7CEE4 /* SetPrintableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1A51E1A529DF700A7CEE4 /* SetPrintableTests.swift */; };
 		D40D2668195F0C1100BC535B /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40D2667195F0C1100BC535B /* Unit.swift */; };
 		D439CFAC19575720005BD842 /* Set.h in Headers */ = {isa = PBXBuildFile; fileRef = D439CFAB19575720005BD842 /* Set.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -19,6 +28,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5405C50B1A87AEF2005142E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D439CF9D19575720005BD842 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5405C4FE1A87AEF1005142E4;
+			remoteInfo = "Set-iOS";
+		};
 		D439CFB319575721005BD842 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D439CF9D19575720005BD842 /* Project object */;
@@ -32,6 +48,8 @@
 		4ACE19961A3F7C1400A42022 /* SetInclusionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetInclusionTests.swift; sourceTree = "<group>"; };
 		4ACE19981A3F7CA600A42022 /* SetHigherOrderFunctionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetHigherOrderFunctionTests.swift; sourceTree = "<group>"; };
 		4AF6FA881A3EBBD500DDC8EE /* SetInitializerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetInitializerTests.swift; sourceTree = "<group>"; };
+		5405C4FF1A87AEF1005142E4 /* Set.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Set.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5405C5091A87AEF2005142E4 /* Set-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Set-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95B1A51E1A529DF700A7CEE4 /* SetPrintableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetPrintableTests.swift; sourceTree = "<group>"; };
 		D40D2667195F0C1100BC535B /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		D439CFA619575720005BD842 /* Set.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Set.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +62,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5405C4FB1A87AEF1005142E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5405C5061A87AEF2005142E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5405C50A1A87AEF2005142E4 /* Set.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D439CFA219575720005BD842 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -77,6 +110,8 @@
 			children = (
 				D439CFA619575720005BD842 /* Set.framework */,
 				D439CFB119575720005BD842 /* SetTests.xctest */,
+				5405C4FF1A87AEF1005142E4 /* Set.framework */,
+				5405C5091A87AEF2005142E4 /* Set-iOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,6 +159,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		5405C4FC1A87AEF1005142E4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5405C51A1A87AEFE005142E4 /* Set.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D439CFA319575720005BD842 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -135,9 +178,45 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		D439CFA519575720005BD842 /* Set */ = {
+		5405C4FE1A87AEF1005142E4 /* Set-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D439CFBC19575721005BD842 /* Build configuration list for PBXNativeTarget "Set" */;
+			buildConfigurationList = 5405C5121A87AEF2005142E4 /* Build configuration list for PBXNativeTarget "Set-iOS" */;
+			buildPhases = (
+				5405C4FA1A87AEF1005142E4 /* Sources */,
+				5405C4FB1A87AEF1005142E4 /* Frameworks */,
+				5405C4FC1A87AEF1005142E4 /* Headers */,
+				5405C4FD1A87AEF1005142E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Set-iOS";
+			productName = "Set-iOS";
+			productReference = 5405C4FF1A87AEF1005142E4 /* Set.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5405C5081A87AEF2005142E4 /* Set-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5405C5151A87AEF2005142E4 /* Build configuration list for PBXNativeTarget "Set-iOSTests" */;
+			buildPhases = (
+				5405C5051A87AEF2005142E4 /* Sources */,
+				5405C5061A87AEF2005142E4 /* Frameworks */,
+				5405C5071A87AEF2005142E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5405C50C1A87AEF2005142E4 /* PBXTargetDependency */,
+			);
+			name = "Set-iOSTests";
+			productName = "Set-iOSTests";
+			productReference = 5405C5091A87AEF2005142E4 /* Set-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D439CFA519575720005BD842 /* Set-Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D439CFBC19575721005BD842 /* Build configuration list for PBXNativeTarget "Set-Mac" */;
 			buildPhases = (
 				D439CFA119575720005BD842 /* Sources */,
 				D439CFA219575720005BD842 /* Frameworks */,
@@ -148,14 +227,14 @@
 			);
 			dependencies = (
 			);
-			name = Set;
+			name = "Set-Mac";
 			productName = Set;
 			productReference = D439CFA619575720005BD842 /* Set.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		D439CFB019575720005BD842 /* SetTests */ = {
+		D439CFB019575720005BD842 /* Set-MacTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D439CFBF19575721005BD842 /* Build configuration list for PBXNativeTarget "SetTests" */;
+			buildConfigurationList = D439CFBF19575721005BD842 /* Build configuration list for PBXNativeTarget "Set-MacTests" */;
 			buildPhases = (
 				D439CFAD19575720005BD842 /* Sources */,
 				D439CFAE19575720005BD842 /* Frameworks */,
@@ -166,7 +245,7 @@
 			dependencies = (
 				D439CFB419575721005BD842 /* PBXTargetDependency */,
 			);
-			name = SetTests;
+			name = "Set-MacTests";
 			productName = SetTests;
 			productReference = D439CFB119575720005BD842 /* SetTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -180,6 +259,12 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Rob Rix";
 				TargetAttributes = {
+					5405C4FE1A87AEF1005142E4 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					5405C5081A87AEF2005142E4 = {
+						CreatedOnToolsVersion = 6.2;
+					};
 					D439CFA519575720005BD842 = {
 						CreatedOnToolsVersion = 6.0;
 					};
@@ -201,13 +286,29 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D439CFA519575720005BD842 /* Set */,
-				D439CFB019575720005BD842 /* SetTests */,
+				D439CFA519575720005BD842 /* Set-Mac */,
+				D439CFB019575720005BD842 /* Set-MacTests */,
+				5405C4FE1A87AEF1005142E4 /* Set-iOS */,
+				5405C5081A87AEF2005142E4 /* Set-iOSTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5405C4FD1A87AEF1005142E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5405C5071A87AEF2005142E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D439CFA419575720005BD842 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -225,6 +326,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5405C4FA1A87AEF1005142E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5405C5181A87AEFB005142E4 /* Set.swift in Sources */,
+				5405C5191A87AEFB005142E4 /* Unit.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5405C5051A87AEF2005142E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5405C51D1A87AF08005142E4 /* SetInitializerTests.swift in Sources */,
+				5405C51F1A87AF08005142E4 /* SetPrintableTests.swift in Sources */,
+				5405C51B1A87AF08005142E4 /* SetHigherOrderFunctionTests.swift in Sources */,
+				5405C51E1A87AF08005142E4 /* SetOperationTests.swift in Sources */,
+				5405C51C1A87AF08005142E4 /* SetInclusionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D439CFA119575720005BD842 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -249,14 +371,105 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5405C50C1A87AEF2005142E4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5405C4FE1A87AEF1005142E4 /* Set-iOS */;
+			targetProxy = 5405C50B1A87AEF2005142E4 /* PBXContainerItemProxy */;
+		};
 		D439CFB419575721005BD842 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D439CFA519575720005BD842 /* Set */;
+			target = D439CFA519575720005BD842 /* Set-Mac */;
 			targetProxy = D439CFB319575721005BD842 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		5405C5131A87AEF2005142E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Set/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Set;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5405C5141A87AEF2005142E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Set/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Set;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5405C5161A87AEF2005142E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SetTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5405C5171A87AEF2005142E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SetTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		D439CFBA19575721005BD842 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -351,7 +564,7 @@
 				INFOPLIST_FILE = Set/Info.plist;
 				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Set;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -370,7 +583,7 @@
 				INFOPLIST_FILE = Set/Info.plist;
 				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Set;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -412,6 +625,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5405C5121A87AEF2005142E4 /* Build configuration list for PBXNativeTarget "Set-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5405C5131A87AEF2005142E4 /* Debug */,
+				5405C5141A87AEF2005142E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5405C5151A87AEF2005142E4 /* Build configuration list for PBXNativeTarget "Set-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5405C5161A87AEF2005142E4 /* Debug */,
+				5405C5171A87AEF2005142E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		D439CFA019575720005BD842 /* Build configuration list for PBXProject "Set" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -421,7 +650,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D439CFBC19575721005BD842 /* Build configuration list for PBXNativeTarget "Set" */ = {
+		D439CFBC19575721005BD842 /* Build configuration list for PBXNativeTarget "Set-Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D439CFBD19575721005BD842 /* Debug */,
@@ -430,7 +659,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D439CFBF19575721005BD842 /* Build configuration list for PBXNativeTarget "SetTests" */ = {
+		D439CFBF19575721005BD842 /* Build configuration list for PBXNativeTarget "Set-MacTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D439CFC019575721005BD842 /* Debug */,
