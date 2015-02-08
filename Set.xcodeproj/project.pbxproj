@@ -55,7 +55,7 @@
 		D439CFA619575720005BD842 /* Set.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Set.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D439CFAA19575720005BD842 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D439CFAB19575720005BD842 /* Set.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Set.h; sourceTree = "<group>"; };
-		D439CFB119575720005BD842 /* SetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D439CFB119575720005BD842 /* SetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SetTests.xctest; path = "Set-MacTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D439CFB719575721005BD842 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D439CFB819575721005BD842 /* SetOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetOperationTests.swift; sourceTree = "<group>"; };
 		D439CFC21957572E005BD842 /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
@@ -632,6 +632,7 @@
 				5405C5141A87AEF2005142E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5405C5151A87AEF2005142E4 /* Build configuration list for PBXNativeTarget "Set-iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -640,6 +641,7 @@
 				5405C5171A87AEF2005142E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D439CFA019575720005BD842 /* Build configuration list for PBXProject "Set" */ = {
 			isa = XCConfigurationList;
