@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D439CFA519575720005BD842"
-               BuildableName = "Set-Mac.framework"
+               BuildableName = "Set.framework"
                BlueprintName = "Set-Mac"
                ReferencedContainer = "container:Set.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D439CFA519575720005BD842"
-            BuildableName = "Set-Mac.framework"
+            BuildableName = "Set.framework"
             BlueprintName = "Set-Mac"
             ReferencedContainer = "container:Set.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D439CFA519575720005BD842"
-            BuildableName = "Set-Mac.framework"
+            BuildableName = "Set.framework"
             BlueprintName = "Set-Mac"
             ReferencedContainer = "container:Set.xcodeproj">
          </BuildableReference>
@@ -94,7 +94,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D439CFA519575720005BD842"
-            BuildableName = "Set-Mac.framework"
+            BuildableName = "Set.framework"
             BlueprintName = "Set-Mac"
             ReferencedContainer = "container:Set.xcodeproj">
          </BuildableReference>
