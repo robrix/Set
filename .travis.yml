@@ -1,5 +1,7 @@
 language: objective-c
 install: gem install xcpretty
-script: set -o pipefail && xcodebuild test -scheme Set-Mac | xcpretty -c
+script:
+    - set -o pipefail && xcodebuild test -scheme Set-Mac | xcpretty -c
+    - set -o pipefail && xcodebuild test -scheme Set-iOS | xcpretty -c
 notifications:
   email: false
