@@ -17,6 +17,10 @@ final class MultisetInclusionTests: XCTestCase {
 		XCTAssert(Multiset(1, 2, 3).subset(Multiset(1, 2, 3)))
 	}
 
+	func testSubsetIncludesSmallerMultiplicities() {
+		XCTAssert(Multiset(1, 2, 3).subset(Multiset(1, 1, 2, 3)))
+	}
+
 	func testStrictSupersetIsNotSubset() {
 		XCTAssertFalse(Multiset(1, 2, 3, 4).subset(Multiset(1, 2, 3)))
 	}
@@ -37,6 +41,10 @@ final class MultisetInclusionTests: XCTestCase {
 
 	func testSupersetIncludesSelf() {
 		XCTAssert(Multiset(1, 2, 3).superset(Multiset(1, 2, 3)))
+	}
+
+	func testSupersetIncludesLargerMultiplicities() {
+		XCTAssert(Multiset(1, 1, 2, 3).superset(Multiset(1, 2, 3)))
 	}
 
 	func testStrictSubsetIsNotSuperset() {
