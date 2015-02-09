@@ -22,6 +22,7 @@
 		D4EAE2511A88441000931323 /* MultisetCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2501A88441000931323 /* MultisetCollectionTests.swift */; };
 		D4EAE2531A88592F00931323 /* Hashing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2521A88592F00931323 /* Hashing.swift */; };
 		D4EAE2551A885A6F00931323 /* Printing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2541A885A6F00931323 /* Printing.swift */; };
+		D4EAE2571A88604A00931323 /* MultisetAlgebraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2561A88604A00931323 /* MultisetAlgebraTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		D4EAE2501A88441000931323 /* MultisetCollectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultisetCollectionTests.swift; sourceTree = "<group>"; };
 		D4EAE2521A88592F00931323 /* Hashing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hashing.swift; sourceTree = "<group>"; };
 		D4EAE2541A885A6F00931323 /* Printing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printing.swift; sourceTree = "<group>"; };
+		D4EAE2561A88604A00931323 /* MultisetAlgebraTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultisetAlgebraTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				4AF6FA881A3EBBD500DDC8EE /* SetInitializerTests.swift */,
 				D439CFB819575721005BD842 /* SetOperationTests.swift */,
 				95B1A51E1A529DF700A7CEE4 /* SetPrintableTests.swift */,
+				D4EAE2561A88604A00931323 /* MultisetAlgebraTests.swift */,
 				D4EAE2501A88441000931323 /* MultisetCollectionTests.swift */,
 				D4EAE24E1A8841BE00931323 /* MultisetCountTests.swift */,
 				D4EAE24C1A883EDD00931323 /* MultisetSequenceTests.swift */,
@@ -265,6 +268,7 @@
 				D4EAE24F1A8841BE00931323 /* MultisetCountTests.swift in Sources */,
 				D4EAE24D1A883EDD00931323 /* MultisetSequenceTests.swift in Sources */,
 				4ACE19971A3F7C1400A42022 /* SetInclusionTests.swift in Sources */,
+				D4EAE2571A88604A00931323 /* MultisetAlgebraTests.swift in Sources */,
 				D4EAE2511A88441000931323 /* MultisetCollectionTests.swift in Sources */,
 				4AF6FA891A3EBBD500DDC8EE /* SetInitializerTests.swift in Sources */,
 			);
