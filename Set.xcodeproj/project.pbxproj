@@ -21,6 +21,7 @@
 		D4EAE24F1A8841BE00931323 /* MultisetCountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE24E1A8841BE00931323 /* MultisetCountTests.swift */; };
 		D4EAE2511A88441000931323 /* MultisetCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2501A88441000931323 /* MultisetCollectionTests.swift */; };
 		D4EAE2531A88592F00931323 /* Hashing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2521A88592F00931323 /* Hashing.swift */; };
+		D4EAE2551A885A6F00931323 /* Printing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2541A885A6F00931323 /* Printing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		D4EAE24E1A8841BE00931323 /* MultisetCountTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultisetCountTests.swift; sourceTree = "<group>"; };
 		D4EAE2501A88441000931323 /* MultisetCollectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultisetCollectionTests.swift; sourceTree = "<group>"; };
 		D4EAE2521A88592F00931323 /* Hashing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hashing.swift; sourceTree = "<group>"; };
+		D4EAE2541A885A6F00931323 /* Printing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				D4EAE24A1A8835C100931323 /* Multiset.swift */,
 				D40D2667195F0C1100BC535B /* Unit.swift */,
 				D4EAE2521A88592F00931323 /* Hashing.swift */,
+				D4EAE2541A885A6F00931323 /* Printing.swift */,
 				D439CFA919575720005BD842 /* Supporting Files */,
 			);
 			path = Set;
@@ -248,6 +251,7 @@
 				D439CFC31957572E005BD842 /* Set.swift in Sources */,
 				D4EAE2531A88592F00931323 /* Hashing.swift in Sources */,
 				D40D2668195F0C1100BC535B /* Unit.swift in Sources */,
+				D4EAE2551A885A6F00931323 /* Printing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

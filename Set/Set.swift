@@ -209,18 +209,14 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	// MARK: Printable
 
 	public var description: String {
-		return count > 0 ?
-			"{" + join(", ", lazy(self).map(toString)) + "}"
-		:	"{}"
+		return describe(self)
 	}
 
 
 	// MARK: DebugPrintable
 	
 	public var debugDescription: String {
-		return count > 0 ?
-			"{" + join(", ", lazy(self).map(toDebugString)) + "}"
-		:	"{}"
+		return debugDescribe(self)
 	}
 	
 
