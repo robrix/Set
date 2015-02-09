@@ -29,7 +29,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 
 	// MARK: Properties
 
-	/// The number of entries in the set.
+	/// The number of entries in the receiver.
 	public var count: Int {
 		return values.count
 	}

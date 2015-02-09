@@ -28,7 +28,7 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 
 	// MARK: Properties
 
-	/// The number of entries in the multiset.
+	/// The number of entries in the receiver.
 	public var count: Int {
 		return reduce(lazy(values).map { $0.1 }, 0, +)
 	}
