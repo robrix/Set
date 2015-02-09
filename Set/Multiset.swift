@@ -200,6 +200,7 @@ public func == <Element: Hashable> (left: MultisetIndex<Element>, right: Multise
 	}
 }
 
+
 // MARK: Comparable
 
 public func < <Element: Hashable> (left: MultisetIndex<Element>, right: MultisetIndex<Element>) -> Bool {
