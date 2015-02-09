@@ -11,4 +11,15 @@ final class MultisetSequenceTests: XCTestCase {
 		multiset.insert(2)
 		XCTAssertEqual(sorted(map(multiset) { $0 }), [ 0, 1, 2 ])
 	}
+
+	func testGeneratorProducesElementsByMultiplicity() {
+		var multiset = Multiset<Int>()
+		multiset.insert(1)
+		multiset.insert(1)
+		multiset.insert(1)
+		multiset.insert(2)
+		multiset.insert(2)
+		multiset.insert(3)
+		XCTAssertEqual(reduce(multiset, 0, +), 10)
+	}
 }
