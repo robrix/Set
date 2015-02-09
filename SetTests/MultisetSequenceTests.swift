@@ -9,7 +9,7 @@ final class MultisetSequenceTests: XCTestCase {
 		multiset.insert(0)
 		multiset.insert(1)
 		multiset.insert(2)
-		XCTAssertEqual(sorted(map(multiset) { $0 }), [ 0, 1, 2 ])
+		XCTAssertEqual(sorted(Array(multiset)), [ 0, 1, 2 ])
 	}
 
 	func testGeneratorProducesElementsByMultiplicity() {
