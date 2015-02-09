@@ -1,7 +1,7 @@
 //  Copyright (c) 2015 Rob Rix. All rights reserved.
 
 /// A multiset of elements and their counts.
-public struct Multiset<Element: Hashable>: ExtensibleCollectionType {
+public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollectionType {
 	// MARK: Constructors
 
 	/// Constructs a `Set` with the elements of `sequence`.
@@ -71,6 +71,13 @@ public struct Multiset<Element: Hashable>: ExtensibleCollectionType {
 	/// Removes all elements from the reeiver.
 	public mutating func removeAll() {
 		values = [:]
+	}
+
+
+	// MARK: ArrayLiteralConvertible
+
+	public init(arrayLiteral elements: Element...) {
+		self.init(elements)
 	}
 
 
