@@ -240,6 +240,17 @@ public func += <S: SequenceType> (inout set: Multiset<S.Generator.Element>, sequ
 }
 
 
+/// Returns a new set with all elements from `set` which are not contained in `other`.
+public func - <Element> (set: Multiset<Element>, other: Multiset<Element>) -> Multiset<Element> {
+	return set.complement(other)
+}
+
+/// Removes all elements in `other` from `set`.
+public func -= <Element> (inout set: Multiset<Element>, other: Multiset<Element>) {
+	set = set.complement(other)
+}
+
+
 
 // Defines equality for multisets.
 public func == <Element> (a: Multiset<Element>, b: Multiset<Element>) -> Bool {
