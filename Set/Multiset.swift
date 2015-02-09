@@ -110,3 +110,46 @@ public struct Multiset<Element: Hashable>: SequenceType, CollectionType {
 	/// Counts indexed by value.
 	private var values: [Element: Int]
 }
+
+
+/// The index for values of a multiset.
+public struct MultisetIndex<Element: Hashable>: BidirectionalIndexType, Comparable {
+	// MARK: BidirectionalIndexType
+
+	public func predecessor() -> MultisetIndex {
+		return MultisetIndex(from: from, delta: delta - 1, max: max)
+	}
+
+	public func successor() -> MultisetIndex {
+		return MultisetIndex(from: from, delta: delta + 1, max: max)
+	}
+
+
+	// MARK: Private
+
+	private let from: DictionaryIndex<Element, Int>
+	private let delta: Int
+	private let max: Int
+}
+
+
+// MARK: Equatable
+
+public func == <Element: Hashable> (left: MultisetIndex<Element>, right: MultisetIndex<Element>) -> Bool {
+	if left.from == right.from {
+		return left.delta == right.delta && left.max == right.max
+	} else {
+		return left.max == right.max && abs(left.delta - right.delta) == left.max
+	}
+}
+
+// MARK: Comparable
+
+public func < <Element: Hashable> (left: MultisetIndex<Element>, right: MultisetIndex<Element>) -> Bool {
+	if left.from == right.from {
+		return left.delta < right.delta
+	} else if left.from < right.from {
+		return (left.delta - right.delta) < left.max
+	}
+	return false
+}
