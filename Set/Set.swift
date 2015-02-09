@@ -152,8 +152,13 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 
 	// MARK: CollectionType
 
-	public var startIndex: DictionaryIndex<Element, Unit> { return values.startIndex }
-	public var endIndex: DictionaryIndex<Element, Unit> { return values.endIndex }
+	public var startIndex: DictionaryIndex<Element, Unit> {
+		return values.startIndex
+	}
+
+	public var endIndex: DictionaryIndex<Element, Unit> {
+		return values.endIndex
+	}
 
 	public subscript(v: ()) -> Element {
 		get { return values[values.startIndex].0 }
