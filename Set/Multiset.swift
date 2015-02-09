@@ -95,6 +95,11 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 	}
 
 
+	/// Applies `transform` to each element and returns a new set which is the union of each resulting set.
+	public func flatMap<Result, S: SequenceType where S.Generator.Element == Result>(transform: Element -> S) -> Multiset<Result> {
+		return reduce([]) { $0 + transform($1) }
+	}
+
 	/// Combines each element of the receiver with an accumulator value using `combine`, starting with `initial`.
 	public func reduce<Into>(initial: Into, combine: (Into, Element) -> Into) -> Into {
 		return Swift.reduce(self, initial, combine)
