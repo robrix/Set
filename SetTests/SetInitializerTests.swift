@@ -3,7 +3,7 @@
 import XCTest
 import Set
 
-class SetInitializerTests: XCTestCase {
+final class SetInitializerTests: XCTestCase {
 	func testVariadic() {
 		XCTAssert(Set(1) == Set([1]))
 		XCTAssert(Set(1, 2, 3) == Set([1, 2, 3]))

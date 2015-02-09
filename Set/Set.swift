@@ -21,20 +21,22 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 		self.init(values: [:])
 	}
 
-	/// Constructs a `Set` with a hint as to the capacity it should allocate.
+	/// Constructs an empty `Set` with a hint as to the capacity it should allocate.
 	public init(minimumCapacity: Int) {
-		self.init(values: [Element:Unit](minimumCapacity: minimumCapacity))
+		self.init(values: [Element: Unit](minimumCapacity: minimumCapacity))
 	}
 
 
 	// MARK: Properties
 
-	/// The number of entries in the set.
-	public var count: Int { return values.count }
+	/// The number of entries in the receiver.
+	public var count: Int {
+		return values.count
+	}
 
-	/// True iff `count == 0`
+	/// True iff `count` is 0.
 	public var isEmpty: Bool {
-		return self.values.isEmpty
+		return values.isEmpty
 	}
 
 
@@ -43,6 +45,12 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	/// True iff `element` is in the receiver, as defined by its hash and equality.
 	public func contains(element: Element) -> Bool {
 		return values[element] != nil
+	}
+
+	/// Retrieve an arbitrary element & insert with empty subscript.
+	public subscript(v: ()) -> Element {
+		get { return values[values.startIndex].0 }
+		set { insert(newValue) }
 	}
 
 	/// Inserts `element` into the receiver, if it doesn’t already exist.
@@ -70,7 +78,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 
 	/// Returns the intersection of the receiver and `set`.
 	public func intersection(set: Set) -> Set {
-		return self.count <= set.count ?
+		return count <= set.count ?
 			filter { set.contains($0) }
 		:	set.filter { self.contains($0) }
 	}
@@ -127,7 +135,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 
 	/// Applies `transform` to each element and returns a new set which is the union of each resulting set.
 	public func flatMap<Result, S: SequenceType where S.Generator.Element == Result>(transform: Element -> S) -> Set<Result> {
-		return reduce(Set<Result>()) { $0 + transform($1) }
+		return reduce([]) { $0 + transform($1) }
 	}
 
 	/// Combines each element of the receiver with an accumulator value using `combine`, starting with `initial`.
@@ -152,30 +160,30 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 
 	// MARK: CollectionType
 
-	public var startIndex: DictionaryIndex<Element, Unit> { return values.startIndex }
-	public var endIndex: DictionaryIndex<Element, Unit> { return values.endIndex }
+	public typealias Index = DictionaryIndex<Element, Unit>
 
-	public subscript(v: ()) -> Element {
-		get { return values[values.startIndex].0 }
-		set { insert(newValue) }
+	public var startIndex: Index {
+		return values.startIndex
 	}
 
-	public subscript(index: DictionaryIndex<Element, Unit>) -> Element {
+	public var endIndex: Index {
+		return values.endIndex
+	}
+
+	public subscript(index: Index) -> Element {
 		return values[index].0
 	}
 
 
 	// MARK: ExtensibleCollectionType
 
-	/// In theory, reserve capacity for `n` elements. However, Dictionary does not implement reserveCapacity(), so we just silently ignore it.
+	/// In theory, reserve capacity for `n` elements. However, `Dictionary` does not implement `reserveCapacity`, so we just silently ignore it.
 	public func reserveCapacity(n: Set.Index.Distance) {}
 
 	/// Inserts each element of `sequence` into the receiver.
 	public mutating func extend<S: SequenceType where S.Generator.Element == Element>(sequence: S) {
 		// Note that this should just be for each in sequence; this is working around a compiler bug.
-		var generator = sequence.generate()
-		let next: () -> Element? = { generator.next() }
-		for each in GeneratorOf(next) {
+		for each in SequenceOf<Element>(sequence) {
 			insert(each)
 		}
 	}
@@ -194,34 +202,21 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	///
 	/// NB: Jenkins’ usage appears to have been string keys; the usage employed here seems similar but may have subtle differences which have yet to be discovered.
 	public var hashValue: Int {
-		var h = reduce(0) { into, each in
-			var h = into + each.hashValue
-			h += (h << 10)
-			h ^= (h >> 6)
-			return h
-		}
-		h += (h << 3)
-		h ^= (h >> 11)
-		h += (h << 15)
-		return h
+		return hashValues(self)
 	}
 
 
 	// MARK: Printable
 
 	public var description: String {
-		return count > 0 ?
-			"{" + join(", ", lazy(self).map(toString)) + "}"
-		:	"{}"
+		return describe(self)
 	}
 
 
 	// MARK: DebugPrintable
 	
 	public var debugDescription: String {
-		return count > 0 ?
-			"{" + join(", ", lazy(self).map(toDebugString)) + "}"
-		:	"{}"
+		return debugDescribe(self)
 	}
 	
 

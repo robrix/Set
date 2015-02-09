@@ -25,6 +25,14 @@
 		D439CFB219575721005BD842 /* Set.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D439CFA619575720005BD842 /* Set.framework */; };
 		D439CFB919575721005BD842 /* SetOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D439CFB819575721005BD842 /* SetOperationTests.swift */; };
 		D439CFC31957572E005BD842 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = D439CFC21957572E005BD842 /* Set.swift */; };
+		D4EAE24B1A8835C100931323 /* Multiset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE24A1A8835C100931323 /* Multiset.swift */; };
+		D4EAE24D1A883EDD00931323 /* MultisetSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE24C1A883EDD00931323 /* MultisetSequenceTests.swift */; };
+		D4EAE24F1A8841BE00931323 /* MultisetCountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE24E1A8841BE00931323 /* MultisetCountTests.swift */; };
+		D4EAE2511A88441000931323 /* MultisetCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2501A88441000931323 /* MultisetCollectionTests.swift */; };
+		D4EAE2531A88592F00931323 /* Hashing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2521A88592F00931323 /* Hashing.swift */; };
+		D4EAE2551A885A6F00931323 /* Printing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2541A885A6F00931323 /* Printing.swift */; };
+		D4EAE2571A88604A00931323 /* MultisetAlgebraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2561A88604A00931323 /* MultisetAlgebraTests.swift */; };
+		D4EAE2591A8867E200931323 /* MultisetInclusionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2581A8867E200931323 /* MultisetInclusionTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +67,14 @@
 		D439CFB719575721005BD842 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D439CFB819575721005BD842 /* SetOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetOperationTests.swift; sourceTree = "<group>"; };
 		D439CFC21957572E005BD842 /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
+		D4EAE24A1A8835C100931323 /* Multiset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Multiset.swift; sourceTree = "<group>"; };
+		D4EAE24C1A883EDD00931323 /* MultisetSequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultisetSequenceTests.swift; sourceTree = "<group>"; };
+		D4EAE24E1A8841BE00931323 /* MultisetCountTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultisetCountTests.swift; sourceTree = "<group>"; };
+		D4EAE2501A88441000931323 /* MultisetCollectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultisetCollectionTests.swift; sourceTree = "<group>"; };
+		D4EAE2521A88592F00931323 /* Hashing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hashing.swift; sourceTree = "<group>"; };
+		D4EAE2541A885A6F00931323 /* Printing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printing.swift; sourceTree = "<group>"; };
+		D4EAE2561A88604A00931323 /* MultisetAlgebraTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultisetAlgebraTests.swift; sourceTree = "<group>"; };
+		D4EAE2581A8867E200931323 /* MultisetInclusionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultisetInclusionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +137,10 @@
 			children = (
 				D439CFAB19575720005BD842 /* Set.h */,
 				D439CFC21957572E005BD842 /* Set.swift */,
+				D4EAE24A1A8835C100931323 /* Multiset.swift */,
 				D40D2667195F0C1100BC535B /* Unit.swift */,
+				D4EAE2521A88592F00931323 /* Hashing.swift */,
+				D4EAE2541A885A6F00931323 /* Printing.swift */,
 				D439CFA919575720005BD842 /* Supporting Files */,
 			);
 			path = Set;
@@ -143,6 +162,11 @@
 				4AF6FA881A3EBBD500DDC8EE /* SetInitializerTests.swift */,
 				D439CFB819575721005BD842 /* SetOperationTests.swift */,
 				95B1A51E1A529DF700A7CEE4 /* SetPrintableTests.swift */,
+				D4EAE2561A88604A00931323 /* MultisetAlgebraTests.swift */,
+				D4EAE2501A88441000931323 /* MultisetCollectionTests.swift */,
+				D4EAE24E1A8841BE00931323 /* MultisetCountTests.swift */,
+				D4EAE2581A8867E200931323 /* MultisetInclusionTests.swift */,
+				D4EAE24C1A883EDD00931323 /* MultisetSequenceTests.swift */,
 				D439CFB619575721005BD842 /* Supporting Files */,
 			);
 			path = SetTests;
@@ -351,8 +375,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4EAE24B1A8835C100931323 /* Multiset.swift in Sources */,
 				D439CFC31957572E005BD842 /* Set.swift in Sources */,
+				D4EAE2531A88592F00931323 /* Hashing.swift in Sources */,
 				D40D2668195F0C1100BC535B /* Unit.swift in Sources */,
+				D4EAE2551A885A6F00931323 /* Printing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,7 +390,12 @@
 				4ACE19991A3F7CA600A42022 /* SetHigherOrderFunctionTests.swift in Sources */,
 				95B1A51F1A529DF700A7CEE4 /* SetPrintableTests.swift in Sources */,
 				D439CFB919575721005BD842 /* SetOperationTests.swift in Sources */,
+				D4EAE24F1A8841BE00931323 /* MultisetCountTests.swift in Sources */,
+				D4EAE24D1A883EDD00931323 /* MultisetSequenceTests.swift in Sources */,
+				D4EAE2591A8867E200931323 /* MultisetInclusionTests.swift in Sources */,
 				4ACE19971A3F7C1400A42022 /* SetInclusionTests.swift in Sources */,
+				D4EAE2571A88604A00931323 /* MultisetAlgebraTests.swift in Sources */,
+				D4EAE2511A88441000931323 /* MultisetCollectionTests.swift in Sources */,
 				4AF6FA891A3EBBD500DDC8EE /* SetInitializerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
