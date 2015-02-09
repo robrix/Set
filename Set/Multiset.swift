@@ -1,7 +1,7 @@
 //  Copyright (c) 2015 Rob Rix. All rights reserved.
 
 /// A multiset of elements and their counts.
-public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollectionType, Equatable {
+public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollectionType, Hashable {
 	// MARK: Constructors
 
 	/// Constructs a `Set` with the elements of `sequence`.
@@ -148,6 +148,17 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 		insert(element)
 	}
 
+
+	// MARK: Hashable
+
+	/// Hashes using Bob Jenkins’ one-at-a-time hash.
+	///
+	/// http://en.wikipedia.org/wiki/Jenkins_hash_function#one-at-a-time
+	///
+	/// NB: Jenkins’ usage appears to have been string keys; the usage employed here seems similar but may have subtle differences which have yet to be discovered.
+	public var hashValue: Int {
+		return hashValues(self)
+	}
 
 
 	// MARK: Private
