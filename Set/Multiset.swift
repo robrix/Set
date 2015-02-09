@@ -12,6 +12,11 @@ public struct Multiset<T: Hashable> {
 
 	// MARK: Private
 
+	/// Constructs a `Multiset` with a dictionary of `values`.
+	private init(values: [T: Int]) {
+		self.values = values
+	}
+
 	/// Counts indexed by value.
 	private var values: [T: Int]
 }
