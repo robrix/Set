@@ -79,6 +79,14 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 	}
 
 
+	// MARK: Algebraic operations
+
+	/// Returns the union of the receiver and `set`.
+	public func union(set: Multiset) -> Multiset {
+		return self + set
+	}
+
+
 	// MARK: ArrayLiteralConvertible
 
 	public init(arrayLiteral elements: Element...) {
