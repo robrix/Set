@@ -48,7 +48,7 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 
 	/// True iff `element` is in the receiver, as defined by its hash and equality.
 	public func contains(element: Element) -> Bool {
-		return count(element) == 0
+		return count(element) > 0
 	}
 
 	/// Returns the number of occurrences of `element` in the receiver.
