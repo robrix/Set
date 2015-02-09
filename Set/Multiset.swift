@@ -4,6 +4,11 @@
 public struct Multiset<T: Hashable> {
 	// MARK: Properties
 
+	/// The number of entries in the multiset.
+	public var count: Int {
+		return reduce(lazy(values).map { $0.1 }, 0, +)
+	}
+
 	/// True iff `count` is 0.
 	public var isEmpty: Bool {
 		return values.isEmpty
