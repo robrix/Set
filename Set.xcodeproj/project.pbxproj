@@ -33,6 +33,9 @@
 		D4EAE2551A885A6F00931323 /* Printing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2541A885A6F00931323 /* Printing.swift */; };
 		D4EAE2571A88604A00931323 /* MultisetAlgebraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2561A88604A00931323 /* MultisetAlgebraTests.swift */; };
 		D4EAE2591A8867E200931323 /* MultisetInclusionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2581A8867E200931323 /* MultisetInclusionTests.swift */; };
+		D4EAE25E1A88F8D600931323 /* Multiset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE24A1A8835C100931323 /* Multiset.swift */; };
+		D4EAE25F1A88F8D600931323 /* Hashing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2521A88592F00931323 /* Hashing.swift */; };
+		D4EAE2601A88F8D600931323 /* Printing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2541A885A6F00931323 /* Printing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -354,8 +357,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4EAE25E1A88F8D600931323 /* Multiset.swift in Sources */,
 				5405C5181A87AEFB005142E4 /* Set.swift in Sources */,
+				D4EAE25F1A88F8D600931323 /* Hashing.swift in Sources */,
 				5405C5191A87AEFB005142E4 /* Unit.swift in Sources */,
+				D4EAE2601A88F8D600931323 /* Printing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
