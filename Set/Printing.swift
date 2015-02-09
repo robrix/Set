@@ -2,15 +2,17 @@
 
 /// Describes a sequence as a set.
 internal func describe<S: SequenceType>(sequence: S) -> String {
-	let description = join(", ", lazy(sequence).map(toString))
-	return description.isEmpty ?
-		"{}"
-	:	"{ \(description) }"
+	return wrapDescription(join(", ", lazy(sequence).map(toString)))
 }
 
 /// Debug-describes a sequence as a set.
 internal func debugDescribe<S: SequenceType>(sequence: S) -> String {
-	let description = join(", ", lazy(sequence).map(toDebugString))
+	return wrapDescription(join(", ", lazy(sequence).map(toDebugString)))
+}
+
+
+/// Wraps a string appropriately for formatting as a set.
+private func wrapDescription(description: String) -> String {
 	return description.isEmpty ?
 		"{}"
 	:	"{ \(description) }"
