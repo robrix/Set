@@ -51,6 +51,11 @@ public struct Multiset<Element: Hashable> {
 		}
 	}
 
+	/// Removes all elements from the reeiver.
+	public mutating func removeAll() {
+		values = [:]
+	}
+
 
 	// MARK: Private
 
