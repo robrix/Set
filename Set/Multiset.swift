@@ -225,8 +225,16 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 }
 
 
-// MARK: Equatable
+// MARK: - Operators
 
+/// Extends a `set` with the elements of a `sequence`.
+public func += <S: SequenceType> (inout set: Multiset<S.Generator.Element>, sequence: S) {
+	set.extend(sequence)
+}
+
+
+
+// Defines equality for multisets.
 public func == <Element> (a: Multiset<Element>, b: Multiset<Element>) -> Bool {
 	return a.values == b.values
 }
