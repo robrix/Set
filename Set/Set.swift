@@ -30,7 +30,9 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	// MARK: Properties
 
 	/// The number of entries in the set.
-	public var count: Int { return values.count }
+	public var count: Int {
+		return values.count
+	}
 
 	/// True iff `count` is 0.
 	public var isEmpty: Bool {
