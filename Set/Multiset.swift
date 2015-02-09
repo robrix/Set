@@ -1,7 +1,7 @@
 //  Copyright (c) 2015 Rob Rix. All rights reserved.
 
 /// A multiset of elements and their counts.
-public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollectionType, Hashable {
+public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollectionType, Hashable, Printable, DebugPrintable {
 	// MARK: Constructors
 
 	/// Constructs a `Set` with the elements of `sequence`.
@@ -158,6 +158,20 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 	/// NB: Jenkins’ usage appears to have been string keys; the usage employed here seems similar but may have subtle differences which have yet to be discovered.
 	public var hashValue: Int {
 		return hashValues(self)
+	}
+
+
+	// MARK: Printable
+
+	public var description: String {
+		return describe(self)
+	}
+
+
+	// MARK: DebugPrintable
+
+	public var debugDescription: String {
+		return debugDescribe(self)
 	}
 
 
