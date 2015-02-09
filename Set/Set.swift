@@ -34,7 +34,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 
 	/// True iff `count == 0`
 	public var isEmpty: Bool {
-		return self.values.isEmpty
+		return values.isEmpty
 	}
 
 
@@ -70,7 +70,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 
 	/// Returns the intersection of the receiver and `set`.
 	public func intersection(set: Set) -> Set {
-		return self.count <= set.count ?
+		return count <= set.count ?
 			filter { set.contains($0) }
 		:	set.filter { self.contains($0) }
 	}
