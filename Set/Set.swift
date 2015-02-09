@@ -202,16 +202,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	///
 	/// NB: Jenkins’ usage appears to have been string keys; the usage employed here seems similar but may have subtle differences which have yet to be discovered.
 	public var hashValue: Int {
-		var h = reduce(0) { into, each in
-			var h = into + each.hashValue
-			h += (h << 10)
-			h ^= (h >> 6)
-			return h
-		}
-		h += (h << 3)
-		h ^= (h >> 11)
-		h += (h << 15)
-		return h
+		return hashValues(self)
 	}
 
 
