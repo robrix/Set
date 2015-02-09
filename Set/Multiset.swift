@@ -10,6 +10,11 @@ public struct Multiset<Element: Hashable>: ExtensibleCollectionType {
 		extend(sequence)
 	}
 
+	/// Constructs a `Set` from a variadic parameter list.
+	public init(_ elements: Element...) {
+		self.init(elements)
+	}
+
 	/// Constructs the empty `Multiset`.
 	public init() {
 		self.init(values: [:])
