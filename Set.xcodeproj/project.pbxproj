@@ -17,6 +17,7 @@
 		D439CFB919575721005BD842 /* SetOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D439CFB819575721005BD842 /* SetOperationTests.swift */; };
 		D439CFC31957572E005BD842 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = D439CFC21957572E005BD842 /* Set.swift */; };
 		D4EAE24B1A8835C100931323 /* Multiset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE24A1A8835C100931323 /* Multiset.swift */; };
+		D4EAE24D1A883EDD00931323 /* MultisetSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE24C1A883EDD00931323 /* MultisetSequenceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		D439CFB819575721005BD842 /* SetOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetOperationTests.swift; sourceTree = "<group>"; };
 		D439CFC21957572E005BD842 /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 		D4EAE24A1A8835C100931323 /* Multiset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Multiset.swift; sourceTree = "<group>"; };
+		D4EAE24C1A883EDD00931323 /* MultisetSequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultisetSequenceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				4AF6FA881A3EBBD500DDC8EE /* SetInitializerTests.swift */,
 				D439CFB819575721005BD842 /* SetOperationTests.swift */,
 				95B1A51E1A529DF700A7CEE4 /* SetPrintableTests.swift */,
+				D4EAE24C1A883EDD00931323 /* MultisetSequenceTests.swift */,
 				D439CFB619575721005BD842 /* Supporting Files */,
 			);
 			path = SetTests;
@@ -245,6 +248,7 @@
 				4ACE19991A3F7CA600A42022 /* SetHigherOrderFunctionTests.swift in Sources */,
 				95B1A51F1A529DF700A7CEE4 /* SetPrintableTests.swift in Sources */,
 				D439CFB919575721005BD842 /* SetOperationTests.swift in Sources */,
+				D4EAE24D1A883EDD00931323 /* MultisetSequenceTests.swift in Sources */,
 				4ACE19971A3F7C1400A42022 /* SetInclusionTests.swift in Sources */,
 				4AF6FA891A3EBBD500DDC8EE /* SetInitializerTests.swift in Sources */,
 			);
