@@ -94,6 +94,10 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 		return Multiset(lazy(self).filter(includeElement))
 	}
 
+	/// Returns a new set with the result of applying `transform` to each element.
+	public func map<Result>(transform: Element -> Result) -> Multiset<Result> {
+		return flatMap { [transform($0)] }
+	}
 
 	/// Applies `transform` to each element and returns a new set which is the union of each resulting set.
 	public func flatMap<Result, S: SequenceType where S.Generator.Element == Result>(transform: Element -> S) -> Multiset<Result> {
