@@ -1,6 +1,6 @@
 # Set
 
-![Build status](https://api.travis-ci.org/robrix/Set.svg)
+[![Build status](https://api.travis-ci.org/robrix/Set.svg)](https://travis-ci.org/robrix/Set)
 
 This is a Swift microframework which implements a Dictionary-backed Set.
 
