@@ -1,7 +1,7 @@
 //  Copyright (c) 2015 Rob Rix. All rights reserved.
 
 /// A multiset of elements and their counts.
-public struct Multiset<Element: Hashable>: SequenceType, CollectionType {
+public struct Multiset<Element: Hashable>: ExtensibleCollectionType {
 	// MARK: Constructors
 
 	/// Constructs the empty `Multiset`.
@@ -105,6 +105,26 @@ public struct Multiset<Element: Hashable>: SequenceType, CollectionType {
 			return element
 		}
 	}
+
+
+	// MARK: ExtensibleCollectionType
+
+	/// In theory, reserve capacity for `n` elements. However, `Dictionary` does not implement `reserveCapacity`, so we just silently ignore it.
+	public func reserveCapacity(n: Multiset.Index.Distance) {}
+
+	/// Inserts each element of `sequence` into the receiver.
+	public mutating func extend<S: SequenceType where S.Generator.Element == Element>(sequence: S) {
+		// Note that this should just be for each in sequence; this is working around a compiler bug.
+		for each in SequenceOf<Element>(sequence) {
+			insert(each)
+		}
+	}
+
+	/// Appends `element` onto the `Set`.
+	public mutating func append(element: Element) {
+		insert(element)
+	}
+
 
 
 	// MARK: Private
