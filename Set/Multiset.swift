@@ -1,7 +1,7 @@
 //  Copyright (c) 2015 Rob Rix. All rights reserved.
 
 /// A multiset of elements and their counts.
-public struct Multiset<Element: Hashable> {
+public struct Multiset<Element: Hashable>: SequenceType {
 	// MARK: Constructors
 
 	/// Constructs the empty `Multiset`.
@@ -54,6 +54,26 @@ public struct Multiset<Element: Hashable> {
 	/// Removes all elements from the reeiver.
 	public mutating func removeAll() {
 		values = [:]
+	}
+
+
+	// MARK: SequenceType
+
+	public func generate() -> GeneratorOf<Element> {
+		var generator = values.generate()
+		let next = { generator.next() }
+		var current: (element: Element?, count: Int) = (nil, 0)
+		return GeneratorOf {
+			while current.count <= 0 {
+				if let (element, count) = next() {
+					current = (element, count)
+					break
+				}
+				else { return nil }
+			}
+			--current.count
+			return current.element
+		}
 	}
 
 
