@@ -7,4 +7,8 @@ final class MultisetCountTests: XCTestCase {
 	func testCountSumsElementsMultiplicities() {
 		XCTAssertEqual(Multiset(0, 1, 1).count, 3)
 	}
+
+	func testCountOfAnElementIsItsMultiplicity() {
+		XCTAssertEqual(Multiset(0, 1, 1).count(1), 2)
+	}
 }
