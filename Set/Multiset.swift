@@ -4,6 +4,12 @@
 public struct Multiset<Element: Hashable>: ExtensibleCollectionType {
 	// MARK: Constructors
 
+	/// Constructs a `Set` with the elements of `sequence`.
+	public init<S: SequenceType where S.Generator.Element == Element>(_ sequence: S) {
+		self.init(values: [:])
+		extend(sequence)
+	}
+
 	/// Constructs the empty `Multiset`.
 	public init() {
 		self.init(values: [:])
