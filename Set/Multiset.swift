@@ -1,7 +1,7 @@
 //  Copyright (c) 2015 Rob Rix. All rights reserved.
 
 /// A multiset of elements and their counts.
-public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollectionType {
+public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollectionType, Equatable {
 	// MARK: Constructors
 
 	/// Constructs a `Set` with the elements of `sequence`.
@@ -159,6 +159,13 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 
 	/// Counts indexed by value.
 	private var values: [Element: Int]
+}
+
+
+// MARK: Equatable
+
+public func == <Element> (a: Multiset<Element>, b: Multiset<Element>) -> Bool {
+	return a.values == b.values
 }
 
 
