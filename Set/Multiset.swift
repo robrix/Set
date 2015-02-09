@@ -85,18 +85,25 @@ public struct Multiset<Element: Hashable>: SequenceType, CollectionType {
 
 	// MARK: CollectionType
 
-	public typealias Index = DictionaryIndex<Element, Int>
+	public typealias Index = MultisetIndex<Element>
 
 	public var startIndex: Index {
-		return values.startIndex
+		return MultisetIndex(from: values.startIndex, delta: 0, max: count)
 	}
 
 	public var endIndex: Index {
-		return values.endIndex
+		return MultisetIndex(from: values.endIndex, delta: 0, max: count)
 	}
 
 	public subscript(index: Index) -> Element {
-		return values[index].0
+		let (element, count) = values[index.from]
+		if index.delta > (count - 1) {
+			return self[MultisetIndex(from: index.from.successor(), delta: index.delta - count, max: self.count)]
+		} else if index.delta < -(count - 1) {
+			return self[MultisetIndex(from: index.from.predecessor(), delta: index.delta + count, max: self.count)]
+		} else {
+			return element
+		}
 	}
 
 
