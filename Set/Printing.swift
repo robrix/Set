@@ -15,5 +15,5 @@ internal func debugDescribe<S: SequenceType>(sequence: S) -> String {
 private func wrapDescription(description: String) -> String {
 	return description.isEmpty ?
 		"{}"
-	:	"{ \(description) }"
+	:	"{\(description)}"
 }
