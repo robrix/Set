@@ -1,7 +1,7 @@
 //  Copyright (c) 2015 Rob Rix. All rights reserved.
 
 /// A multiset of elements and their counts.
-public struct Multiset<T: Hashable> {
+public struct Multiset<Element: Hashable> {
 	// MARK: Constructors
 
 	/// Constructs the empty `Multiset`.
@@ -26,10 +26,10 @@ public struct Multiset<T: Hashable> {
 	// MARK: Private
 
 	/// Constructs a `Multiset` with a dictionary of `values`.
-	private init(values: [T: Int]) {
+	private init(values: [Element: Int]) {
 		self.values = values
 	}
 
 	/// Counts indexed by value.
-	private var values: [T: Int]
+	private var values: [Element: Int]
 }
