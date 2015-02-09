@@ -9,6 +9,11 @@ public struct Multiset<Element: Hashable> {
 		self.init(values: [:])
 	}
 
+	/// Constructs an empty `Multiset` with a hint as to the capacity it should allocate.
+	public init(minimumCapacity: Int) {
+		self.init(values: [Element: Int](minimumCapacity: minimumCapacity))
+	}
+
 
 	// MARK: Properties
 
