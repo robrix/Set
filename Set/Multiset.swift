@@ -93,9 +93,9 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 
 	/// Returns the intersection of the receiver and `set`.
 	public func intersection(set: Multiset) -> Multiset {
-		return count <= set.count ?
-			filter { set.contains($0) }
-		:	set.filter { self.contains($0) }
+		return Multiset(values: countDistinct <= set.countDistinct ?
+			Swift.map(values) { ($0, min($1, set.count($0))) }
+		:	Swift.map(set.values) { ($0, min($1, self.count($0))) })
 	}
 
 	/// Returns the relative complement of `set` in `self`.
