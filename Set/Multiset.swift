@@ -2,6 +2,14 @@
 
 /// A multiset of elements and their counts.
 public struct Multiset<T: Hashable> {
+	// MARK: Constructors
+
+	/// Constructs the empty `Multiset`.
+	public init() {
+		self.init(values: [:])
+	}
+
+
 	// MARK: Properties
 
 	/// The number of entries in the multiset.
