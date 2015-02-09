@@ -30,7 +30,7 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 
 	/// The number of entries in the receiver.
 	public var count: Int {
-		return reduce(lazy(values).map { $0.1 }, 0, +)
+		return Swift.reduce(lazy(values).map { $0.1 }, 0, +)
 	}
 
 	/// The number of distinct entries in the receiver.
@@ -92,6 +92,12 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 	/// Returns a new set including only those elements `x` where `includeElement(x)` is true.
 	public func filter(includeElement: Element -> Bool) -> Multiset {
 		return Multiset(lazy(self).filter(includeElement))
+	}
+
+
+	/// Combines each element of the receiver with an accumulator value using `combine`, starting with `initial`.
+	public func reduce<Into>(initial: Into, combine: (Into, Element) -> Into) -> Into {
+		return Swift.reduce(self, initial, combine)
 	}
 
 
