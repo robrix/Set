@@ -64,8 +64,8 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	}
 
 	/// Removes all elements from the receiver.
-	public mutating func removeAll() {
-		values = [:]
+	public mutating func removeAll(keepCapacity: Bool = false) {
+		values.removeAll(keepCapacity: keepCapacity)
 	}
 
 
