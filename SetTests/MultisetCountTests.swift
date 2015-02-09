@@ -11,4 +11,10 @@ final class MultisetCountTests: XCTestCase {
 	func testCountOfAnElementIsItsMultiplicity() {
 		XCTAssertEqual(Multiset(0, 1, 1).count(1), 2)
 	}
+
+	func testContainsIsTrueWhenCountIsGreaterThanZero() {
+		XCTAssert(Multiset(0, 1, 1).contains(0))
+		XCTAssert(Multiset(0, 1, 1).contains(1))
+		XCTAssertFalse(Multiset(0, 1, 1).contains(2))
+	}
 }
