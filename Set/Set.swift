@@ -23,7 +23,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 
 	/// Constructs a `Set` with a hint as to the capacity it should allocate.
 	public init(minimumCapacity: Int) {
-		self.init(values: [Element:Unit](minimumCapacity: minimumCapacity))
+		self.init(values: [Element: Unit](minimumCapacity: minimumCapacity))
 	}
 
 
