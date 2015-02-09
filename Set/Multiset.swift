@@ -93,6 +93,13 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 		:	set.filter { self.contains($0) }
 	}
 
+	/// Returns the relative complement of `set` in `self`.
+	///
+	/// This is a new set with all elements from the receiver which are not contained in `set`.
+	public func complement(set: Multiset) -> Multiset {
+		return filter { !set.contains($0) }
+	}
+
 
 	// MARK: Higher-order functions
 
