@@ -100,6 +100,14 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 		return filter { !set.contains($0) }
 	}
 
+	/// Returns the symmetric difference of `self` and `set`.
+	///
+	/// This is a new set with all elements that exist only in `self` or `set`, and not both.
+	public func difference(set: Multiset) -> Multiset {
+		return union(set) - intersection(set)
+	}
+
+
 
 	// MARK: Higher-order functions
 
