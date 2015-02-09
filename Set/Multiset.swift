@@ -35,6 +35,11 @@ public struct Multiset<Element: Hashable> {
 		return values[element] != nil
 	}
 
+	/// Inserts `element` into the receiver.
+	public mutating func insert(element: Element) {
+		values[element] = (values[element] ?? 0) + 1
+	}
+
 
 	// MARK: Private
 
