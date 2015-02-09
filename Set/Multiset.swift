@@ -108,6 +108,29 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 	}
 
 
+	// MARK: Set inclusion functions
+
+	/// True iff the receiver is a subset of (is included in) `set`.
+	public func subset(set: Multiset) -> Bool {
+		return complement(set) == Multiset()
+	}
+
+	/// True iff the receiver is a subset of but not equal to `set`.
+	public func strictSubset(set: Multiset) -> Bool {
+		return subset(set) && self != set
+	}
+
+	/// True iff the receiver is a superset of (includes) `set`.
+	public func superset(set: Multiset) -> Bool {
+		return set.subset(self)
+	}
+
+	/// True iff the receiver is a superset of but not equal to `set`.
+	public func strictSuperset(set: Multiset) -> Bool {
+		return set.strictSubset(self)
+	}
+
+
 
 	// MARK: Higher-order functions
 
