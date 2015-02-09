@@ -28,6 +28,14 @@ public struct Multiset<Element: Hashable> {
 	}
 
 
+	// MARK: Primitive operations
+
+	/// True iff `element` is in the receiver, as defined by its hash and equality.
+	public func contains(element: Element) -> Bool {
+		return values[element] != nil
+	}
+
+
 	// MARK: Private
 
 	/// Constructs a `Multiset` with a dictionary of `values`.
