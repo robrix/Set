@@ -78,7 +78,7 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 		}
 	}
 
-	/// Removes all elements from the reeiver.
+	/// Removes all elements from the receiver.
 	public mutating func removeAll(keepCapacity: Bool = false) {
 		values.removeAll(keepCapacity: keepCapacity)
 	}
