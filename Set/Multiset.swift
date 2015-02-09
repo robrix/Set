@@ -35,6 +35,12 @@ public struct Multiset<Element: Hashable>: SequenceType {
 		return values[element] != nil
 	}
 
+	/// Retrieve an arbitrary element & insert with empty subscript.
+	public subscript(v: ()) -> Element {
+		get { return values[values.startIndex].0 }
+		set { insert(newValue) }
+	}
+
 	/// Inserts `element` into the receiver.
 	public mutating func insert(element: Element) {
 		values[element] = (values[element] ?? 0) + 1
