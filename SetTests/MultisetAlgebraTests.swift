@@ -16,4 +16,8 @@ final class MultisetAlgebraTests: XCTestCase {
 		XCTAssertEqual((Multiset(1, 1, 1, 2, 3) - Multiset(1, 1, 2, 4, 5)), Multiset(1, 3))
 		XCTAssertEqual((Multiset(1, 1, 2, 4, 5) - Multiset(1, 1, 1, 2, 3)), Multiset(4, 5))
 	}
+
+	func testDifferenceOfMultisets() {
+		XCTAssertEqual(Multiset(1, 1, 1, 2, 3).difference(Multiset(1, 1, 2, 4)), Multiset(1, 3, 4))
+	}
 }
