@@ -5,21 +5,10 @@ import Set
 
 final class MultisetSequenceTests: XCTestCase {
 	func testGeneratorProducesEveryElement() {
-		var multiset = Multiset<Int>()
-		multiset.insert(0)
-		multiset.insert(1)
-		multiset.insert(2)
-		XCTAssertEqual(sorted(Array(multiset)), [ 0, 1, 2 ])
+		XCTAssertEqual(sorted(Array(Multiset(0, 1, 2))), [ 0, 1, 2 ])
 	}
 
 	func testGeneratorProducesElementsByMultiplicity() {
-		var multiset = Multiset<Int>()
-		multiset.insert(1)
-		multiset.insert(1)
-		multiset.insert(1)
-		multiset.insert(2)
-		multiset.insert(2)
-		multiset.insert(3)
-		XCTAssertEqual(reduce(multiset, 0, +), 10)
+		XCTAssertEqual(reduce(Multiset(1, 1, 1, 2, 2, 3), 0, +), 10)
 	}
 }
