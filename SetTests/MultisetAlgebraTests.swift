@@ -11,4 +11,8 @@ final class MultisetAlgebraTests: XCTestCase {
 	func testIntersectionOfMultisetsMinimizesMultiplicities() {
 		XCTAssertEqual((Multiset(1, 1, 1, 2, 3) & Multiset(1, 1, 2, 4)), Multiset(1, 1, 2))
 	}
+
+	func testComplementOfMultisetsSubtractsMultiplicities() {
+		XCTAssertEqual((Multiset(1, 1, 1, 2, 3) - Multiset(1, 1, 2, 4)), Multiset(1, 3))
+	}
 }
