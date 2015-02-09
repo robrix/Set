@@ -33,6 +33,11 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 		return reduce(lazy(values).map { $0.1 }, 0, +)
 	}
 
+	/// The number of distinct entries in the receiver.
+	public var countDistinct: Int {
+		return values.count
+	}
+
 	/// True iff `count` is 0.
 	public var isEmpty: Bool {
 		return values.isEmpty
