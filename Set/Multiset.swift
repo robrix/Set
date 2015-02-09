@@ -1,7 +1,7 @@
 //  Copyright (c) 2015 Rob Rix. All rights reserved.
 
 /// A multiset of elements and their counts.
-public struct Multiset<Element: Hashable>: SequenceType {
+public struct Multiset<Element: Hashable>: SequenceType, CollectionType {
 	// MARK: Constructors
 
 	/// Constructs the empty `Multiset`.
@@ -80,6 +80,21 @@ public struct Multiset<Element: Hashable>: SequenceType {
 			--current.count
 			return current.element
 		}
+	}
+
+
+	// MARK: CollectionType
+
+	public var startIndex: DictionaryIndex<Element, Int> {
+		return values.startIndex
+	}
+
+	public var endIndex: DictionaryIndex<Element, Int> {
+		return values.endIndex
+	}
+
+	public subscript(index: DictionaryIndex<Element, Int>) -> Element {
+		return values[index].0
 	}
 
 
