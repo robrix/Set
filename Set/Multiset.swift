@@ -51,6 +51,11 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 		return values[element] != nil
 	}
 
+	/// Returns the number of occurrences of `element` in the receiver.
+	public func count(element: Element) -> Int {
+		return values[element] ?? 0
+	}
+
 	/// Retrieve an arbitrary element & insert with empty subscript.
 	public subscript(v: ()) -> Element {
 		get { return values[values.startIndex].0 }
