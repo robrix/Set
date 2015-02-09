@@ -102,7 +102,9 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 	///
 	/// This is a new set with all elements from the receiver which are not contained in `set`.
 	public func complement(set: Multiset) -> Multiset {
-		return filter { !set.contains($0) }
+		return Multiset(values: countDistinct <= set.countDistinct ?
+			Swift.map(values) { ($0, $1 - set.count($0)) }
+		:	Swift.map(set.values) { ($0, $1 - self.count($0)) })
 	}
 
 	/// Returns the symmetric difference of `self` and `set`.
