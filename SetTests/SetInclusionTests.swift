@@ -3,7 +3,7 @@
 import XCTest
 import Set
 
-class SetInclusionTests: XCTestCase {
+final class SetInclusionTests: XCTestCase {
 	func testSubset() {
 		XCTAssert(Set(1).subset(Set(1, 2, 3)))
 	}

@@ -3,7 +3,7 @@
 import XCTest
 import Set
 
-class SetPrintableTests: XCTestCase, Printable, DebugPrintable {
+final class SetPrintableTests: XCTestCase, Printable, DebugPrintable {
 	func testDescription() {
 		XCTAssertEqual(Set<Int>().description, "{}")
 		XCTAssertEqual(Set(self).description, "{description}")

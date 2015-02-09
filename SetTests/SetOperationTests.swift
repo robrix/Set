@@ -3,7 +3,7 @@
 import XCTest
 import Set
 
-class SetOperationTests: XCTestCase {
+final class SetOperationTests: XCTestCase {
 	func testUnionAddsElementsFromBothOperands() {
 		XCTAssert(Set(1, 2, 3, 4) + Set(3, 4, 5) == Set(1, 2, 3, 4, 5))
 	}

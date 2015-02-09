@@ -3,7 +3,7 @@
 import XCTest
 import Set
 
-class SetHigherOrderFunctionTests: XCTestCase {
+final class SetHigherOrderFunctionTests: XCTestCase {
 	func testFilter() {
 		XCTAssert(Set(1, 2, 3).filter { $0 == 2 } == Set(2))
 	}
