@@ -127,7 +127,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 
 	/// Applies `transform` to each element and returns a new set which is the union of each resulting set.
 	public func flatMap<Result, S: SequenceType where S.Generator.Element == Result>(transform: Element -> S) -> Set<Result> {
-		return reduce(Set<Result>()) { $0 + transform($1) }
+		return reduce([]) { $0 + transform($1) }
 	}
 
 	/// Combines each element of the receiver with an accumulator value using `combine`, starting with `initial`.
