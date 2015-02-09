@@ -36,6 +36,11 @@
 		D4EAE25E1A88F8D600931323 /* Multiset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE24A1A8835C100931323 /* Multiset.swift */; };
 		D4EAE25F1A88F8D600931323 /* Hashing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2521A88592F00931323 /* Hashing.swift */; };
 		D4EAE2601A88F8D600931323 /* Printing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2541A885A6F00931323 /* Printing.swift */; };
+		D4EAE2611A88F8DE00931323 /* MultisetAlgebraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2561A88604A00931323 /* MultisetAlgebraTests.swift */; };
+		D4EAE2621A88F8DE00931323 /* MultisetCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2501A88441000931323 /* MultisetCollectionTests.swift */; };
+		D4EAE2631A88F8DE00931323 /* MultisetCountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE24E1A8841BE00931323 /* MultisetCountTests.swift */; };
+		D4EAE2641A88F8DE00931323 /* MultisetInclusionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE2581A8867E200931323 /* MultisetInclusionTests.swift */; };
+		D4EAE2651A88F8DE00931323 /* MultisetSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EAE24C1A883EDD00931323 /* MultisetSequenceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -370,10 +375,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				5405C51D1A87AF08005142E4 /* SetInitializerTests.swift in Sources */,
+				D4EAE2621A88F8DE00931323 /* MultisetCollectionTests.swift in Sources */,
 				5405C51F1A87AF08005142E4 /* SetPrintableTests.swift in Sources */,
+				D4EAE2641A88F8DE00931323 /* MultisetInclusionTests.swift in Sources */,
 				5405C51B1A87AF08005142E4 /* SetHigherOrderFunctionTests.swift in Sources */,
+				D4EAE2611A88F8DE00931323 /* MultisetAlgebraTests.swift in Sources */,
 				5405C51E1A87AF08005142E4 /* SetOperationTests.swift in Sources */,
+				D4EAE2631A88F8DE00931323 /* MultisetCountTests.swift in Sources */,
 				5405C51C1A87AF08005142E4 /* SetInclusionTests.swift in Sources */,
+				D4EAE2651A88F8DE00931323 /* MultisetSequenceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
