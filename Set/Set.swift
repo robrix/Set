@@ -175,7 +175,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 
 	// MARK: ExtensibleCollectionType
 
-	/// In theory, reserve capacity for `n` elements. However, Dictionary does not implement reserveCapacity(), so we just silently ignore it.
+	/// In theory, reserve capacity for `n` elements. However, `Dictionary` does not implement `reserveCapacity`, so we just silently ignore it.
 	public func reserveCapacity(n: Set.Index.Distance) {}
 
 	/// Inserts each element of `sequence` into the receiver.
