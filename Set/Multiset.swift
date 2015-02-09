@@ -251,6 +251,16 @@ public func -= <Element> (inout set: Multiset<Element>, other: Multiset<Element>
 }
 
 
+/// Intersects with `set` with `other`.
+public func &= <Element> (inout set: Multiset<Element>, other: Multiset<Element>) {
+	set = set.intersection(other)
+}
+
+/// Returns the intersection of `set` and `other`.
+public func & <Element> (set: Multiset<Element>, other: Multiset<Element>) -> Multiset<Element> {
+	return set.intersection(other)
+}
+
 
 // Defines equality for multisets.
 public func == <Element> (a: Multiset<Element>, b: Multiset<Element>) -> Bool {
