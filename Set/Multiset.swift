@@ -87,6 +87,14 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 	}
 
 
+	// MARK: Higher-order functions
+
+	/// Returns a new set including only those elements `x` where `includeElement(x)` is true.
+	public func filter(includeElement: Element -> Bool) -> Multiset {
+		return Multiset(lazy(self).filter(includeElement))
+	}
+
+
 	// MARK: ArrayLiteralConvertible
 
 	public init(arrayLiteral elements: Element...) {
