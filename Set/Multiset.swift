@@ -40,6 +40,16 @@ public struct Multiset<Element: Hashable> {
 		values[element] = (values[element] ?? 0) + 1
 	}
 
+	/// Removes `element` from the receiver.
+	public mutating func remove(element: Element) {
+		let value = values[element] ?? 0
+		if value > 0 {
+			values[element] = value - 1
+		} else {
+			values.removeValueForKey(element)
+		}
+	}
+
 
 	// MARK: Private
 
