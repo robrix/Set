@@ -267,7 +267,7 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 	private init<S: SequenceType where S.Generator.Element == Dictionary<Element, Int>.Element>(values: S) {
 		self.values = [:]
 		for (element, count) in SequenceOf<(Element, Int)>(values) {
-			self.values[element] = count
+			if count > 0 { self.values[element] = count }
 		}
 	}
 
