@@ -7,4 +7,8 @@ final class MultisetAlgebraTests: XCTestCase {
 	func testUnionOfMultisetsSumsMultiplicities() {
 		XCTAssertEqual((Multiset(1, 2, 3) + Multiset(1)).count(1), 2)
 	}
+
+	func testIntersectionOfMultisetsMinimizesMultiplicities() {
+		XCTAssertEqual((Multiset(1, 1, 1, 2, 3) & Multiset(1, 1, 2, 4)), Multiset(1, 1, 2))
+	}
 }

@@ -263,6 +263,14 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 		self.values = values
 	}
 
+	/// Constructs a `Multiset` with a sequence of element/count pairs.
+	private init<S: SequenceType where S.Generator.Element == Dictionary<Element, Int>.Element>(values: S) {
+		self.values = [:]
+		for (element, count) in SequenceOf<(Element, Int)>(values) {
+			self.values[element] = count
+		}
+	}
+
 	/// Counts indexed by value.
 	private var values: [Element: Int]
 }
