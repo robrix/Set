@@ -158,15 +158,17 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 
 	// MARK: CollectionType
 
-	public var startIndex: DictionaryIndex<Element, Unit> {
+	public typealias Index = DictionaryIndex<Element, Unit>
+
+	public var startIndex: Index {
 		return values.startIndex
 	}
 
-	public var endIndex: DictionaryIndex<Element, Unit> {
+	public var endIndex: Index {
 		return values.endIndex
 	}
 
-	public subscript(index: DictionaryIndex<Element, Unit>) -> Element {
+	public subscript(index: Index) -> Element {
 		return values[index].0
 	}
 
