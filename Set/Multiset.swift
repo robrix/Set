@@ -86,6 +86,13 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 		return self + set
 	}
 
+	/// Returns the intersection of the receiver and `set`.
+	public func intersection(set: Multiset) -> Multiset {
+		return count <= set.count ?
+			filter { set.contains($0) }
+		:	set.filter { self.contains($0) }
+	}
+
 
 	// MARK: Higher-order functions
 
