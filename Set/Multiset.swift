@@ -109,7 +109,7 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 	///
 	/// This is a new set with all elements that exist only in `self` or `set`, and not both.
 	public func difference(set: Multiset) -> Multiset {
-		return union(set) - intersection(set)
+		return (set - self) + (self - set)
 	}
 
 
