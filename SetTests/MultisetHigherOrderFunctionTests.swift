@@ -17,6 +17,6 @@ final class MultisetHigherOrderFunctionTests: XCTestCase {
 	}
 
 	func testFlatMapReturnsTheUnionOfAllResultingSets() {
-		XCTAssert(Multiset(1, 2).flatMap { [$0, $0 * 2] } == Multiset(1, 2, 4))
+		XCTAssertEqual(Multiset(1, 2).flatMap { [$0, $0 * 2] }, Multiset(1, 2, 2, 4))
 	}
 }
