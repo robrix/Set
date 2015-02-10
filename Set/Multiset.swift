@@ -130,7 +130,6 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 	}
 
 
-
 	// MARK: Higher-order functions
 
 	/// Returns a new set including only those elements `x` where `includeElement(x)` is true.
@@ -197,8 +196,6 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 		let (element, count) = values[index.from]
 		if index.delta > (count - 1) {
 			return self[MultisetIndex(from: index.from.successor(), delta: index.delta - count, max: self.count)]
-		} else if index.delta < -(count - 1) {
-			return self[MultisetIndex(from: index.from.predecessor(), delta: index.delta + count, max: self.count)]
 		} else {
 			return element
 		}
@@ -307,12 +304,8 @@ public func == <Element> (a: Multiset<Element>, b: Multiset<Element>) -> Bool {
 
 
 /// The index for values of a multiset.
-public struct MultisetIndex<Element: Hashable>: BidirectionalIndexType, Comparable {
-	// MARK: BidirectionalIndexType
-
-	public func predecessor() -> MultisetIndex {
-		return MultisetIndex(from: from, delta: delta - 1, max: max)
-	}
+public struct MultisetIndex<Element: Hashable>: ForwardIndexType, Comparable {
+	// MARK: ForwardIndexType
 
 	public func successor() -> MultisetIndex {
 		return MultisetIndex(from: from, delta: delta + 1, max: max)
