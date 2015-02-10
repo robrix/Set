@@ -63,12 +63,10 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 
 	/// Removes `element` from the receiver.
 	public mutating func remove(element: Element) {
-		if let value = values[element] {
-			if value > 0 {
-				values[element] = value - 1
-			} else {
-				values.removeValueForKey(element)
-			}
+		if let value = values[element] where value > 0 {
+			values[element] = value - 1
+		} else {
+			values.removeValueForKey(element)
 		}
 	}
 
