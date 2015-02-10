@@ -148,7 +148,7 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 	}
 
 	/// Combines each element of the receiver with an accumulator value using `combine`, starting with `initial`.
-	public func reduce<Into>(initial: Into, combine: (Into, Element) -> Into) -> Into {
+	public func reduce<Into>(initial: Into, _ combine: (Into, Element) -> Into) -> Into {
 		return Swift.reduce(self, initial, combine)
 	}
 
