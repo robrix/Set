@@ -71,7 +71,7 @@
 		D439CFA619575720005BD842 /* Set.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Set.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D439CFAA19575720005BD842 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D439CFAB19575720005BD842 /* Set.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Set.h; sourceTree = "<group>"; };
-		D439CFB119575720005BD842 /* SetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SetTests.xctest; path = "Set-MacTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D439CFB119575720005BD842 /* Set-MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Set-MacTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D439CFB719575721005BD842 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D439CFB819575721005BD842 /* SetOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetOperationTests.swift; sourceTree = "<group>"; };
 		D439CFC21957572E005BD842 /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
@@ -133,7 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				D439CFA619575720005BD842 /* Set.framework */,
-				D439CFB119575720005BD842 /* SetTests.xctest */,
+				D439CFB119575720005BD842 /* Set-MacTests.xctest */,
 				5405C4FF1A87AEF1005142E4 /* Set.framework */,
 				5405C5091A87AEF2005142E4 /* Set-iOSTests.xctest */,
 			);
@@ -279,7 +279,7 @@
 			);
 			name = "Set-MacTests";
 			productName = SetTests;
-			productReference = D439CFB119575720005BD842 /* SetTests.xctest */;
+			productReference = D439CFB119575720005BD842 /* Set-MacTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
