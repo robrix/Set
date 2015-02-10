@@ -4,13 +4,13 @@
 public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollectionType, Hashable, Printable, DebugPrintable {
 	// MARK: Constructors
 
-	/// Constructs a `Set` with the elements of `sequence`.
+	/// Constructs a `Multiset` with the elements of `sequence`.
 	public init<S: SequenceType where S.Generator.Element == Element>(_ sequence: S) {
 		self.init(values: [:])
 		extend(sequence)
 	}
 
-	/// Constructs a `Set` from a variadic parameter list.
+	/// Constructs a `Multiset` from a variadic parameter list.
 	public init(_ elements: Element...) {
 		self.init(elements)
 	}
@@ -107,7 +107,7 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 	}
 
 
-	// MARK: Set inclusion functions
+	// MARK: Inclusion functions
 
 	/// True iff the receiver is a subset of (is included in) `set`.
 	public func subset(set: Multiset) -> Bool {
@@ -215,7 +215,7 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 		}
 	}
 
-	/// Appends `element` onto the `Set`.
+	/// Appends `element` onto the `Multiset`.
 	public mutating func append(element: Element) {
 		insert(element)
 	}
