@@ -154,7 +154,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 
 	// MARK: CollectionType
 
-	public typealias Index = DictionaryIndex<Element, Unit>
+	public typealias Index = Dictionary<Element, Unit>.Index
 
 	public var startIndex: Index {
 		return values.startIndex
@@ -222,7 +222,7 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 	}
 
 	/// The underlying dictionary.
-	private var values: [Element: Unit]
+	private var values: Dictionary<Element, Unit>
 }
 
 

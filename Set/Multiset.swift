@@ -266,7 +266,7 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 	}
 
 	/// Counts indexed by value.
-	private var values: [Element: Int]
+	private var values: Dictionary<Element, Int>
 }
 
 
