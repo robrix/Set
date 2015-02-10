@@ -47,12 +47,6 @@ public struct Set<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollect
 		return values[element] != nil
 	}
 
-	/// Retrieve an arbitrary element & insert with empty subscript.
-	public subscript(v: ()) -> Element {
-		get { return values[values.startIndex].0 }
-		set { insert(newValue) }
-	}
-
 	/// Inserts `element` into the receiver, if it doesn’t already exist.
 	public mutating func insert(element: Element) {
 		values[element] = Unit()
