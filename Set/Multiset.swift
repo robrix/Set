@@ -4,13 +4,13 @@
 public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCollectionType, Hashable, Printable, DebugPrintable {
 	// MARK: Constructors
 
-	/// Constructs a `Set` with the elements of `sequence`.
+	/// Constructs a `Multiset` with the elements of `sequence`.
 	public init<S: SequenceType where S.Generator.Element == Element>(_ sequence: S) {
 		self.init(values: [:])
 		extend(sequence)
 	}
 
-	/// Constructs a `Set` from a variadic parameter list.
+	/// Constructs a `Multiset` from a variadic parameter list.
 	public init(_ elements: Element...) {
 		self.init(elements)
 	}
@@ -56,12 +56,6 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 		return values[element] ?? 0
 	}
 
-	/// Retrieve an arbitrary element & insert with empty subscript.
-	public subscript(v: ()) -> Element {
-		get { return values[values.startIndex].0 }
-		set { insert(newValue) }
-	}
-
 	/// Inserts `element` into the receiver.
 	public mutating func insert(element: Element) {
 		values[element] = (values[element] ?? 0) + 1
@@ -69,12 +63,10 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 
 	/// Removes `element` from the receiver.
 	public mutating func remove(element: Element) {
-		if let value = values[element] {
-			if value > 0 {
-				values[element] = value - 1
-			} else {
-				values.removeValueForKey(element)
-			}
+		if let value = values[element] where value > 0 {
+			values[element] = value - 1
+		} else {
+			values.removeValueForKey(element)
 		}
 	}
 
@@ -113,7 +105,7 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 	}
 
 
-	// MARK: Set inclusion functions
+	// MARK: Inclusion functions
 
 	/// True iff the receiver is a subset of (is included in) `set`.
 	public func subset(set: Multiset) -> Bool {
@@ -136,7 +128,6 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 	}
 
 
-
 	// MARK: Higher-order functions
 
 	/// Returns a new set including only those elements `x` where `includeElement(x)` is true.
@@ -155,7 +146,7 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 	}
 
 	/// Combines each element of the receiver with an accumulator value using `combine`, starting with `initial`.
-	public func reduce<Into>(initial: Into, combine: (Into, Element) -> Into) -> Into {
+	public func reduce<Into>(initial: Into, _ combine: (Into, Element) -> Into) -> Into {
 		return Swift.reduce(self, initial, combine)
 	}
 
@@ -203,8 +194,6 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 		let (element, count) = values[index.from]
 		if index.delta > (count - 1) {
 			return self[MultisetIndex(from: index.from.successor(), delta: index.delta - count, max: self.count)]
-		} else if index.delta < -(count - 1) {
-			return self[MultisetIndex(from: index.from.predecessor(), delta: index.delta + count, max: self.count)]
 		} else {
 			return element
 		}
@@ -224,7 +213,7 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 		}
 	}
 
-	/// Appends `element` onto the `Set`.
+	/// Appends `element` onto the `Multiset`.
 	public mutating func append(element: Element) {
 		insert(element)
 	}
@@ -272,7 +261,7 @@ public struct Multiset<Element: Hashable>: ArrayLiteralConvertible, ExtensibleCo
 	}
 
 	/// Counts indexed by value.
-	private var values: [Element: Int]
+	private var values: Dictionary<Element, Int>
 }
 
 
@@ -313,12 +302,8 @@ public func == <Element> (a: Multiset<Element>, b: Multiset<Element>) -> Bool {
 
 
 /// The index for values of a multiset.
-public struct MultisetIndex<Element: Hashable>: BidirectionalIndexType, Comparable {
-	// MARK: BidirectionalIndexType
-
-	public func predecessor() -> MultisetIndex {
-		return MultisetIndex(from: from, delta: delta - 1, max: max)
-	}
+public struct MultisetIndex<Element: Hashable>: ForwardIndexType, Comparable {
+	// MARK: ForwardIndexType
 
 	public func successor() -> MultisetIndex {
 		return MultisetIndex(from: from, delta: delta + 1, max: max)

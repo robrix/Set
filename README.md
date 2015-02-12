@@ -2,22 +2,22 @@
 
 [![Build status](https://api.travis-ci.org/robrix/Set.svg)](https://travis-ci.org/robrix/Set)
 
-This is a Swift microframework which implements a Dictionary-backed Set.
+This is a Swift microframework which implements a Dictionary-backed Multiset.
 
 ## Use
 
 ```swift
 // Union
-Set(1, 2, 3) + Set(3, 4, 5) // == Set(1, 2, 3, 4, 5)
+Multiset(1, 2, 3) + Multiset(3, 4, 5) // == Multiset(1, 2, 3, 3, 4, 5)
 
 // Difference
-Set(1, 2, 3) - Set(2, 3) // == Set(1)
+Multiset(1, 2, 3) - Multiset(2, 3) // == Multiset(1)
 
 // Intersection
-Set(1, 2, 3) & Set(3, 4, 5) // == Set(3)
+Multiset(1, 2, 3) & Multiset(3, 4, 5) // == Multiset(3)
 ```
 
-See [`Set.swift`][Set.swift] for more details.
+See [`Multiset.swift`][Multiset.swift] for more details.
 
 ## Integration
 
@@ -32,4 +32,4 @@ See [`Set.swift`][Set.swift] for more details.
 
 - [Greg Titus wrote a Set in Swift which inspired this](https://twitter.com/gregtitus/status/476420154230726656).
 
-[Set.swift]: https://github.com/robrix/Set/blob/master/Set/Set.swift
+[Multiset.swift]: https://github.com/robrix/Set/blob/master/Set/Multiset.swift

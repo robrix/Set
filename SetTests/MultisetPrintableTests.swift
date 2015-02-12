@@ -3,15 +3,15 @@
 import XCTest
 import Set
 
-final class SetPrintableTests: XCTestCase, Printable, DebugPrintable {
+final class MultisetPrintableTests: XCTestCase, Printable, DebugPrintable {
 	func testDescription() {
-		XCTAssertEqual(Set<Int>().description, "{}")
-		XCTAssertEqual(Set(self).description, "{description}")
+		XCTAssertEqual(Multiset<Int>().description, "{}")
+		XCTAssertEqual(Multiset(self).description, "{description}")
 	}
 
 	func testDebugDescription() {
-		XCTAssertEqual(Set<Int>().debugDescription, "{}")
-		XCTAssertEqual(Set(self).debugDescription, "{debugDescription}")
+		XCTAssertEqual(Multiset<Int>().debugDescription, "{}")
+		XCTAssertEqual(Multiset(self).debugDescription, "{debugDescription}")
 	}
 
 
