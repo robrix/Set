@@ -31,9 +31,9 @@ func isInt(number: Float) -> Bool {
 	return floor(number) == number
 }
 
-let Q = PredicateSet { $0 as Float }
-let Z = Q.intersection(PredicateSet { isInt($0) })
-let N = Z.intersection(PredicateSet { $0 > 0 })
+let Q: PredicateSet<Float> = PredicateSet { $0 as Float } // Set of all real numbers.
+let Z = Q & PredicateSet { isInt($0) } // Set of all integers.
+let N = Z & PredicateSet { $0 > 0 } // Set of all natural numbers.
 
 N.contains(1) // true
 N.contains(-1.5) // false
