@@ -53,3 +53,7 @@ public func +<T>(lhs: PredicateSet<T>, rhs: PredicateSet<T>) -> PredicateSet<T> 
 public func -<T>(lhs: PredicateSet<T>, rhs: PredicateSet<T>) -> PredicateSet<T> {
 	return lhs.difference(rhs)
 }
+
+public func &<T>(lhs: PredicateSet<T>, rhs: PredicateSet<T>) -> PredicateSet<T> {
+	return lhs.intersection(rhs)
+}
