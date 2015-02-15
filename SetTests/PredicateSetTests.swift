@@ -43,3 +43,12 @@ final class PredicateSetTests: XCTestCase {
 		XCTAssertFalse(Q.complement(Z).contains(1.0))
 	}
 }
+
+// MARK: Fixtures
+func isInt(number: Float) -> Bool {
+	return floor(number) == number
+}
+
+let Q = PredicateSet { $0 as Float }
+let Z = Q.intersection(PredicateSet { isInt($0) })
+let N = Z.intersection(PredicateSet { $0 > 0 })
