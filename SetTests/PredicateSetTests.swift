@@ -32,11 +32,11 @@ final class PredicateSetTests: XCTestCase {
 	}
 	
 	func testPredicateSetUnion() {
-		XCTAssert(Q.union(Z).contains(1.1))
+		XCTAssert((Q + Z).contains(1.1))
 	}
 	
 	func testPredicateSetIntersection() {
-		XCTAssert(Q.intersection(Z).contains(2))
+		XCTAssert((Q & Z).contains(2))
 	}
 
 	func testPredicateSetComplement() {
