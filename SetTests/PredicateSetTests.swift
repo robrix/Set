@@ -50,5 +50,5 @@ func isInt(number: Float) -> Bool {
 }
 
 let Q = PredicateSet { $0 as Float }
-let Z = Q.intersection(PredicateSet { isInt($0) })
-let N = Z.intersection(PredicateSet { $0 > 0 })
+let Z = Q & PredicateSet { isInt($0) }
+let N = Z & PredicateSet { $0 > 0 }
