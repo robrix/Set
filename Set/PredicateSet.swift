@@ -4,7 +4,7 @@ public struct PredicateSet<Element: Hashable> {
 	public let predicate: Element -> Bool
 	
 	public init() {
-		self.predicate = { (element: Element) in false }
+		predicate = { _ in false }
 	}
 	
 	public init(_ predicate: Element -> Bool) {
@@ -13,16 +13,16 @@ public struct PredicateSet<Element: Hashable> {
 	
 	public init<T>(_ predicate: Element -> T?) {
 		self.predicate = { element in
-			return (predicate(element) != nil) ? true : false
+			return predicate(element) != nil
 		}
 	}
 	
 	public init(_ set: Set<Element>) {
-		self.predicate = { set.contains($0) }
+		predicate = { set.contains($0) }
 	}
 	
 	public init(_ set: Multiset<Element>) {
-		self.predicate = { set.contains($0) }
+		predicate = { set.contains($0) }
 	}
 
 	public func contains(element: Element) -> Bool {
@@ -63,4 +63,4 @@ public let Z = Q.intersection(PredicateSet { isInt($0) })
 public let N = Z.intersection(PredicateSet { $0 > 0 })
 
 // MARK: - Imports
-import Foundation
+import Darwin
