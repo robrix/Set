@@ -53,14 +53,3 @@ public func +<T>(lhs: PredicateSet<T>, rhs: PredicateSet<T>) -> PredicateSet<T> 
 public func -<T>(lhs: PredicateSet<T>, rhs: PredicateSet<T>) -> PredicateSet<T> {
 	return lhs.difference(rhs)
 }
-
-private func isInt(number: Float) -> Bool {
-	return floor(number) == number
-}
-
-public let Q = PredicateSet { $0 as Float }
-public let Z = Q.intersection(PredicateSet { isInt($0) })
-public let N = Z.intersection(PredicateSet { $0 > 0 })
-
-// MARK: - Imports
-import Darwin

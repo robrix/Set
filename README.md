@@ -2,10 +2,10 @@
 
 [![Build status](https://api.travis-ci.org/robrix/Set.svg)](https://travis-ci.org/robrix/Set)
 
-This is a Swift microframework which implements a Dictionary-backed Multiset.
+This is a Swift microframework which implements a PredicateSet and a Dictionary-backed Multiset.
 
 ## Use
-
+Multiset:
 ```swift
 // Union
 Multiset(1, 2, 3) + Multiset(3, 4, 5) // == Multiset(1, 2, 3, 3, 4, 5)
@@ -16,8 +16,29 @@ Multiset(1, 2, 3) - Multiset(2, 3) // == Multiset(1)
 // Intersection
 Multiset(1, 2, 3) & Multiset(3, 4, 5) // == Multiset(3)
 ```
+PredicateSet:
+```swift
+// Union
+let union = PredicateSet { $0 > 0 } + PredicateSet { $0 % 2 == 0 }
+union.contains(3) // true
 
-See [`Multiset.swift`][Multiset.swift] for more details.
+// Difference
+let difference = PredicateSet { $0 > 0 } - PredicateSet { $0 % 2 == 0 }
+difference.contains(6) // false
+
+// Special Sets
+func isInt(number: Float) -> Bool {
+	return floor(number) == number
+}
+
+let Q = PredicateSet { $0 as Float }
+let Z = Q.intersection(PredicateSet { isInt($0) })
+let N = Z.intersection(PredicateSet { $0 > 0 })
+
+N.contains(1) // true
+N.contains(-1.5) // false
+```
+See [`Multiset.swift`][Multiset.swift] and [`PredicateSet.swift`][PredicateSet.swift] for more details.
 
 ## Integration
 
