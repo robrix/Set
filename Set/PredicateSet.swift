@@ -14,14 +14,7 @@ public struct PredicateSet<Element: Hashable> {
 	public init(_ predicate: Element -> Bool) {
 		self.predicate = predicate
 	}
-	
-	/// Constructs a `PredicateSet` from an optional predicate.
-	public init<T>(_ predicate: Element -> T?) {
-		self.predicate = { element in
-			return predicate(element) != nil
-		}
-	}
-	
+		
 	/// Constructs a `PredicateSet` from a `Set`.
 	public init(_ set: Set<Element>) {
 		predicate = { set.contains($0) }
