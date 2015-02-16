@@ -1,5 +1,7 @@
 //  Copyright (c) 2015 Rob Rix. All rights reserved.
 
+/// A set of elements of type T expressed mathematically as:
+/// { 𝑥 ∈ T | proposition(𝑥) }.
 public struct PredicateSet<Element: Hashable> {
 	// MARK: Constructors
 	
@@ -30,10 +32,12 @@ public struct PredicateSet<Element: Hashable> {
 		predicate = { set.contains($0) }
 	}
 	
+	
 	// MARK: Properties
 	
-	// The set's predicate.
+	/// The set's predicate.
 	public let predicate: Element -> Bool
+	
 	
 	// MARK: Primitive operations
 	
@@ -41,6 +45,7 @@ public struct PredicateSet<Element: Hashable> {
 	public func contains(element: Element) -> Bool {
 		return predicate(element)
 	}
+	
 	
 	// MARK: Algebraic operations
 	
