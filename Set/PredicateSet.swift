@@ -36,7 +36,7 @@ public struct PredicateSet<Element: Hashable> {
 	// MARK: Properties
 	
 	/// The set's predicate.
-	public let predicate: Element -> Bool
+	private let predicate: Element -> Bool
 	
 	
 	// MARK: Primitive operations
