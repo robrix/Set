@@ -54,3 +54,4 @@ See [`Multiset.swift`][Multiset.swift] and [`PredicateSet.swift`][PredicateSet.s
 - [Greg Titus wrote a Set in Swift which inspired this](https://twitter.com/gregtitus/status/476420154230726656).
 
 [Multiset.swift]: https://github.com/robrix/Set/blob/master/Set/Multiset.swift
+[PredicateSet.swift]: https://github.com/robrix/Set/blob/master/Set/PredicateSet.swift
