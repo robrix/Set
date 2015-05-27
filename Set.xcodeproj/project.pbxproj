@@ -18,6 +18,7 @@
 		5405C51B1A87AF08005142E4 /* MultisetHigherOrderFunctionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACE19981A3F7CA600A42022 /* MultisetHigherOrderFunctionTests.swift */; };
 		5405C51D1A87AF08005142E4 /* MultisetInitializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF6FA881A3EBBD500DDC8EE /* MultisetInitializerTests.swift */; };
 		5405C51F1A87AF08005142E4 /* MultisetPrintableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1A51E1A529DF700A7CEE4 /* MultisetPrintableTests.swift */; };
+		959789641B15F400009A24BA /* Set.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5405C4FF1A87AEF1005142E4 /* Set.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95B1A51F1A529DF700A7CEE4 /* MultisetPrintableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B1A51E1A529DF700A7CEE4 /* MultisetPrintableTests.swift */; };
 		D439CFAC19575720005BD842 /* Set.h in Headers */ = {isa = PBXBuildFile; fileRef = D439CFAB19575720005BD842 /* Set.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D439CFB219575721005BD842 /* Set.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D439CFA619575720005BD842 /* Set.framework */; };
@@ -55,6 +56,19 @@
 			remoteInfo = Set;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		959789631B15F3F2009A24BA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				959789641B15F400009A24BA /* Set.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		112B625D1A90638800CC7741 /* PredicateSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredicateSet.swift; sourceTree = "<group>"; };
@@ -227,6 +241,7 @@
 				5405C5051A87AEF2005142E4 /* Sources */,
 				5405C5061A87AEF2005142E4 /* Frameworks */,
 				5405C5071A87AEF2005142E4 /* Resources */,
+				959789631B15F3F2009A24BA /* CopyFiles */,
 			);
 			buildRules = (
 			);
