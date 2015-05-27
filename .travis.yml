@@ -1,4 +1,5 @@
 language: objective-c
+osx_image: beta-xcode6.3
 install: gem install xcpretty
 script:
     - set -o pipefail && xcodebuild test -scheme Set-Mac | xcpretty -c
