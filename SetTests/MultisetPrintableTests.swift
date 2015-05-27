@@ -3,18 +3,7 @@
 import XCTest
 import Set
 
-final class MultisetPrintableTests: XCTestCase, Printable, DebugPrintable {
-	func testDescription() {
-		XCTAssertEqual(Multiset<Int>().description, "{}")
-		XCTAssertEqual(Multiset(self).description, "{description}")
-	}
-
-	func testDebugDescription() {
-		XCTAssertEqual(Multiset<Int>().debugDescription, "{}")
-		XCTAssertEqual(Multiset(self).debugDescription, "{debugDescription}")
-	}
-
-
+final class TestElement: NSObject, Printable, DebugPrintable {
 	// MARK: Printable
 
 	override var description: String {
@@ -26,5 +15,18 @@ final class MultisetPrintableTests: XCTestCase, Printable, DebugPrintable {
 
 	override var debugDescription: String {
 		return __FUNCTION__
+	}
+}
+
+final class MultisetPrintableTests: XCTestCase {
+	func testDescription() {
+		XCTAssertEqual(Multiset<Int>().description, "{}")
+		let test = Multiset<TestElement>()
+		XCTAssertEqual(Multiset(TestElement()).description, "{description}")
+	}
+
+	func testDebugDescription() {
+		XCTAssertEqual(Multiset<Int>().debugDescription, "{}")
+		XCTAssertEqual(Multiset(TestElement()).debugDescription, "{debugDescription}")
 	}
 }

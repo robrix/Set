@@ -2,7 +2,7 @@ language: objective-c
 osx_image: beta-xcode6.3
 install: gem install xcpretty
 script:
-    - set -o pipefail && xcodebuild test -scheme Set-Mac | xcpretty -c
-    - set -o pipefail && xcodebuild test -scheme Set-iOS | xcpretty -c
+	- xctool -project Set.xcodeproj -scheme Set-Mac build test
+	- xctool -project Set.xcodeproj -scheme Set-iOS -sdk iphonesimulator build test
 notifications:
   email: false
