@@ -49,6 +49,6 @@ func isInt(number: Float) -> Bool {
 	return floor(number) == number
 }
 
-let Q = PredicateSet { ($0 as? Float) != nil}
+let Q = PredicateSet<Float> { _ in true }
 let Z = Q & PredicateSet { isInt($0) }
 let N = Z & PredicateSet { $0 > 0 }
