@@ -31,4 +31,10 @@ final class MultisetCountTests: XCTestCase {
 		set.insert(0)
 		XCTAssertFalse(set.isEmpty)
 	}
+
+	func testNonNullConstructedMultisetIsEmptyAfterRemoval() {
+		var set = Multiset(0)
+		set.remove(0)
+		XCTAssert(set.isEmpty)
+	}
 }
