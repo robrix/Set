@@ -17,4 +17,24 @@ final class MultisetCountTests: XCTestCase {
 		XCTAssert(Multiset(0, 1, 1).contains(1))
 		XCTAssertFalse(Multiset(0, 1, 1).contains(2))
 	}
+
+	func testNullMultisetIsEmpty() {
+		XCTAssert(Multiset<Int>().isEmpty)
+	}
+
+	func testNonNullConstructedMultisetIsNotEmpty() {
+		XCTAssertFalse(Multiset(0).isEmpty)
+	}
+
+	func testNullConstructedMultisetIsNotEmptyAfterInsertion() {
+		var set = Multiset<Int>()
+		set.insert(0)
+		XCTAssertFalse(set.isEmpty)
+	}
+
+	func testNonNullConstructedMultisetIsEmptyAfterRemoval() {
+		var set = Multiset(0)
+		set.remove(0)
+		XCTAssert(set.isEmpty)
+	}
 }
